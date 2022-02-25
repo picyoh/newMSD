@@ -1,43 +1,56 @@
-const main = document.getElementById("main");
-let datas;
-let results;
-let stack = [];
+import Question from "./components/questions.js";
+import Carousel from "./components/carousel.js";
+import { loadQuestions, loadResult } from "./services/load.js";
+import { sortResults } from "./services/sortResults.js";
 
-function init() {
-    let firstQ = new Question(-1);
-    firstQ.appendFirst();
-    loadQuestions();
-    firstQ.handleClick();
-}
+const main = document.getElementById("main");
+
+window.onload = () => {
+  loadQuestions();
+  const firstQ = new Question(-1, datas);
+  firstQ.appendFirst();
+  firstQ.handleClick();
+  sessionStorage.setItem('userChoices', JSON.stringify([]))
+};
+
+const datas = JSON.parse(sessionStorage.getItem('questionsItem'))
+// TODO: add userChoices to sessionStorage
+const userChoices = JSON.parse(sessionStorage.getItem('userChoices'));
 
 // ajouter parent
-function nextStep(number){
-    const current = datas[number]
-    if(current.final) {
-        loadResult()
-        .then(data => console.log(data))
-        .catch(reason => console.log(reason.message))
-        
-        const Result = new Results(results)
-
-        // result.appendResults()
-        // result.handleClick()
-    }else {
-        const NewQ = new Question(number, current.question, current.qMulti, current.choices, current.choices.parent)
-        NewQ.appendBtn()
-        NewQ.handleClick()   
-    }
+function nextStep(number) {
+  console.log(datas);
+  const current = datas[number];
+  if (current.final) {
+    loadResult()
+      .then((datas) => {
+        const results = sortResults(datas, userChoices);
+        const carousel = new Carousel();
+        carousel.appendResults();
+        // carousel.handleClick()
+      })
+      .catch((reason) => console.log(reason.message));
+  } else {
+    console.log(datas);
+    const NewQuestion = new Question(
+      number,
+      current.question,
+      current.qMulti,
+      current.choices,
+      current.choices.parent,
+      datas
+    );
+    NewQuestion.appendBtn();
+    NewQuestion.handleClick();
+  }
 }
 
-function stepBack(){
+function stepBack() {}
 
+function setUserChoice(btnValue) {
+  if (userChoices.indexOf(btnValue) === -1) {
+    userChoices.push(btnValue);
+  }
 }
 
-function stackPath(btnValue){
- if (stack.indexOf(btnValue) < 0){
-     stack.push(btnValue);
- } 
- console.log(stack)
-}
-
-init();
+export { nextStep, stepBack, setUserChoice };
