@@ -1,11 +1,10 @@
 function sortResults(datas, userChoices) {
-  const dataArray = datas.results;
-
   const maxLength = 6;
   let userResults = [];
-  let nextScore = 0;
+  let highScore = 0;
   // calculate score and stack 6 highests
-  dataArray.forEach((result, index) => {
+  datas.forEach((result, index) => {
+    // calc
     let score = parseInt(result.value);
     const tags = result.tags;
     // add score for each tags matching
@@ -15,38 +14,25 @@ function sortResults(datas, userChoices) {
         score += 10;
       }
     });
-    const data = dataArray[index];
+    // console.log(score);
+    const data = datas[index];
+    const lastIndex = userResults.length - 1;
+    const smallest = userResults[lastIndex];
     // stack 6 results in userResults
-    if (userResults.length < maxLength) {
-      //   push if isSuperior
-      if (score >= nextScore) return userResults.push({ data, score }), (nextScore = score);
-      
-      if (score < nextScore) {
-        const first = userResults[0];
-        // unshift the lowest
-        if (score < first.score) {
-          return userResults.unshift({ data, score });
-        }
-        // shift then unshfift lowest & current
-        if (score >= first.score) {
-          return (
-            userResults.shift(),
-            userResults.unshift(first, { data, score })
-          );
-        }
-      }
-    }
-    //shift & push if score is highest when array is full
-    if (userResults.length > maxLength && score >= nextScore) {
-      return (
-        userResults.shift(),
-        userResults.push({ index: data, score: score }),
-        (nextScore = score)
-      );
+    // push and sort result score
+    userResults.push({ data, score });
+    userResults.sort((a, b) => {
+      return b.score - a.score;
+    });
+    // pop last if maxlength
+    if (userResults.length > maxLength) {
+      userResults.pop();
     }
   });
-  console.log(userResults)
+  console.log(userResults);
   return userResults;
 }
 
-export { sortResults }
+function compare(a, b) {}
+
+export { sortResults };

@@ -102,3 +102,31 @@ footer {
 .mediaThumb {
     max-height: 2vh;
 }
+
+.slideContainer {
+    width: 18vw;
+    height: 16vh;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.slideContainer img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+#left {
+    left: 0;
+    top: 50%;
+}
+
+#top {
+    top: 0;
+}
+
+#right {
+    right: 0;
+    top: 50%;
+}

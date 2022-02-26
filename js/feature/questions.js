@@ -1,5 +1,5 @@
 import { nextStep } from "../index.js";
-const userChoices = JSON.parse(sessionStorage.getItem('userChoices'));
+import { userChoices, setUserChoice } from '../index.js'
 
 class Question {
   constructor(number, question, qMulti, choices, parent) {
@@ -69,7 +69,6 @@ class Question {
         }
         main.removeChild(question);
         this.number++;
-        console.log(this.number)
         nextStep(this.number);
         e.stopPropagation;
       });

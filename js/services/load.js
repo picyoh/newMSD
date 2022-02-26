@@ -5,7 +5,6 @@ function loadQuestions() {
       // get Json
       const datas = response.questions;
       sessionStorage.setItem('questionsItem', JSON.stringify(datas));
-      console.log(datas)
       return datas;
     })
     .catch((error) => console.log("erreur json " + error));
@@ -16,8 +15,8 @@ function loadResult() {
     .then((response) => response.json())
     .then((response) => {
       // get Json
-      const datas = response.questions;
-      // console.log(datas)
+      const datas = response.results;
+      sessionStorage.setItem('resultsItem', JSON.stringify(datas));
       return datas;
     })
     .catch((error) => console.log("erreur json " + error));
