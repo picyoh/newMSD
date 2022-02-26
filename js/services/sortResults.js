@@ -33,6 +33,4 @@ function sortResults(datas, userChoices) {
   return userResults;
 }
 
-function compare(a, b) {}
-
 export { sortResults };

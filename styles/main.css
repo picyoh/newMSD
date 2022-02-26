@@ -103,30 +103,60 @@ footer {
     max-height: 2vh;
 }
 
+.carouselContainer{
+    width: 50vw;
+    height: 24vh;
+    display: flex;
+    flex-flow: row wrap;
+}
+
 .slideContainer {
+    flex: 33%;
     width: 18vw;
     height: 16vh;
     display: flex;
     flex-flow: column;
     align-items: center;
+    justify-content: space-between;
 }
 
 .slideContainer img {
     object-fit: contain;
-    height: 100%;
     width: 100%;
+    height: 80%;
 }
 
-#left {
-    left: 0;
-    top: 50%;
+.slideContainer p {
+    margin-bottom: 0;
+}
+
+#topLeft {
+    align-self: flex-end;
 }
 
 #top {
     top: 0;
+    order: 1;
 }
 
-#right {
-    right: 0;
-    top: 50%;
+#topRight {
+    align-self: flex-end;
+    order: 2;
+}
+
+#botRight{
+    order: 6;
+}
+
+#bottom{
+    align-self: flex-end;
+    order: 5;
+}
+
+#botLeft{
+    order: 4;
+}
+
+.hidden{
+    display: none;
 }
