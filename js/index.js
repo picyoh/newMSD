@@ -1,5 +1,6 @@
 import Question from "./feature/questions.js";
 import Carousel from "./feature/carousel.js";
+import Cursor from "./feature/cursor.js"
 import { loadQuestions, loadResult } from "./services/load.js";
 import { sortResults } from "./services/sortResults.js";
 
@@ -15,29 +16,43 @@ const main = document.getElementById("main");
 let userChoices = [];
 
 // ajouter parent
-function nextStep(number) {
-  
+function nextStep(currentPos) {
+  // datas
   const resultDatas = JSON.parse(sessionStorage.getItem("resultsItem"));
   const questionDatas = JSON.parse(sessionStorage.getItem("questionsItem"));
-  const current = questionDatas[number];
   
-  if (current.final) {
+  const currentQuestion = questionDatas[currentPos];
+
+  if (currentQuestion.final) {
+    // sort result data
     const results = sortResults(resultDatas, userChoices);
+    // add carousel
     const carousel = new Carousel(results);
     carousel.appendResults();
     // carousel.handleClick()
   } else {
+    // add a new question
     const NewQuestion = new Question(
-      number,
-      current.question,
-      current.qMulti,
-      current.choices,
-      current.choices.parent,
+      currentPos,
+      currentQuestion.question,
+      currentQuestion.qMulti,
+      currentQuestion.choices,
+      currentQuestion.choices.parent,
       questionDatas
     );
     NewQuestion.appendBtn();
     NewQuestion.handleClick();
   }
+
+    // add cursor
+    if(currentPos === 0){
+      const maxPos = questionDatas.length;
+      console.log(maxPos)
+      const cursor = new Cursor(currentPos, questionDatas);
+      cursor.appendCursor();
+    }else{
+      // cursor.moveCursor(currentPos)
+    }
 }
 
 function stepBack() {}

@@ -1,13 +1,25 @@
 // TODO: implementer Cursor
 class Cursor {
-    constructor(position){
-        this.position = position
-    }
+  constructor(position, questionDatas) {
+    this.position = position;
+    this.questionDatas = questionDatas;
+  }
 
-    appendContainer(){
-
-    }
-    moveCursor(){
-
-    }
+  appendCursor() {
+    const cursor = `
+        <div class="cursorContainer">
+        ${this.questionDatas.map((question, index)=> {
+            return `
+            <span class="cursor ${index+1}"></span>
+            `;
+        }).join("")}
+        </div>
+        `;
+        main.insertAdjacentHTML("beforeend", cursor)
+  }
+  moveCursor() {
+      
+  }
 }
+
+export default Cursor;
