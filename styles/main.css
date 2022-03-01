@@ -65,7 +65,7 @@ nav ul li {
 }
 
 .answerGroup {
-    max-width: 80%;;
+    max-width: 80%;
     display: flex;
     justify-content: space-evenly;
 }
@@ -78,6 +78,21 @@ nav ul li {
 /* .answer {
 
 } */
+
+.cursorContainer {
+    position: absolute;
+    top: 75%;
+    width: 75%;
+    height: 3vh;
+    margin: 2rem;
+    background-color: blue;
+    display: flex;
+}
+
+.cursor{
+    flex-grow: 1;
+    border: 1px solid white;
+}
 
 .hide {
     display: none;

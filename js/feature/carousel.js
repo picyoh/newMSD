@@ -41,7 +41,8 @@ class Carousel {
     main.insertAdjacentHTML("beforeend", carousel);
   }
 
-  rotateLeft() {}
+  rotateLeft() {
+  }
 
   rotateRight() {}
 }

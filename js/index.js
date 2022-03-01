@@ -50,6 +50,7 @@ function nextStep(currentPos) {
       const maxPos = questionDatas.length;
       const cursor = new Cursor(currentPos, questionDatas);
       cursor.appendCursor();
+      // cursor.handleClick();
     }else{
       // cursor.moveCursor(currentPos)
     }
