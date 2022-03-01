@@ -3,9 +3,8 @@ function loadQuestions() {
     .then((response) => response.json())
     .then((response) => {
       // get Json
-      const datas = response.questions;
-      sessionStorage.setItem('questionsItem', JSON.stringify(datas));
-      return datas;
+      const questionDatas = response.questions;
+      sessionStorage.setItem('questionsItem', JSON.stringify(questionDatas));
     })
     .catch((error) => console.log("erreur json " + error));
 }
@@ -15,9 +14,8 @@ function loadResult() {
     .then((response) => response.json())
     .then((response) => {
       // get Json
-      const datas = response.results;
-      sessionStorage.setItem('resultsItem', JSON.stringify(datas));
-      return datas;
+      const resultDatas = response.results;
+      sessionStorage.setItem('resultsItem', JSON.stringify(resultDatas));
     })
     .catch((error) => console.log("erreur json " + error));
 }
