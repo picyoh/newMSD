@@ -7,13 +7,14 @@ import { sortResults } from "./services/sortResults.js";
 window.onload = () => {
   loadQuestions();
   loadResult();
+  sessionStorage.setItem('userChoices', '[]')
   const firstQ = new Question(-1, []);
   firstQ.appendFirst();
   firstQ.handleClick();
 };
 
 const main = document.getElementById("main");
-let userChoices = [];
+const userChoices = JSON.parse(sessionStorage.getItem("userChoices"))
 
 // ajouter parent
 function nextStep(currentPos) {
@@ -47,7 +48,6 @@ function nextStep(currentPos) {
     // add cursor
     if(currentPos === 0){
       const maxPos = questionDatas.length;
-      console.log(maxPos)
       const cursor = new Cursor(currentPos, questionDatas);
       cursor.appendCursor();
     }else{
@@ -60,7 +60,7 @@ function stepBack() {}
 function setUserChoice(btnValue) {
   if (userChoices.indexOf(btnValue) === -1) {
     userChoices.push(btnValue);
-    // console.log(userChoices);
+    sessionStorage.setItem('userChoices', JSON.stringify(userChoices))
   }
 }
 
