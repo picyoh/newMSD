@@ -1,5 +1,5 @@
 import { nextStep } from "../index.js";
-import { userChoices, setUserChoice } from '../index.js'
+import { setUserChoice } from '../index.js'
 
 class Question {
   constructor(number, question, qMulti, choices, parent) {
@@ -23,6 +23,7 @@ class Question {
   }
 
   appendBtn() {
+    const userChoices = JSON.parse(sessionStorage.getItem("userChoices"))
     const button = `
             <section class="question">
             ${

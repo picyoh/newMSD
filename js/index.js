@@ -14,13 +14,13 @@ window.onload = () => {
 };
 
 const main = document.getElementById("main");
-const userChoices = JSON.parse(sessionStorage.getItem("userChoices"))
 
 // ajouter parent
 function nextStep(currentPos) {
   // datas
   const resultDatas = JSON.parse(sessionStorage.getItem("resultsItem"));
   const questionDatas = JSON.parse(sessionStorage.getItem("questionsItem"));
+  const userChoices = JSON.parse(sessionStorage.getItem("userChoices"))
   
   const currentQuestion = questionDatas[currentPos];
 
@@ -30,7 +30,7 @@ function nextStep(currentPos) {
     // add carousel
     const carousel = new Carousel(results);
     carousel.appendResults();
-    // carousel.handleClick()
+    carousel.rotateLeft()
   } else {
     // add a new question
     const NewQuestion = new Question(
@@ -59,10 +59,11 @@ function nextStep(currentPos) {
 function stepBack() {}
 
 function setUserChoice(btnValue) {
+  const userChoices = JSON.parse(sessionStorage.getItem("userChoices"))
   if (userChoices.indexOf(btnValue) === -1) {
     userChoices.push(btnValue);
     sessionStorage.setItem('userChoices', JSON.stringify(userChoices))
   }
 }
 
-export { nextStep, stepBack, setUserChoice, userChoices };
+export { nextStep, stepBack, setUserChoice };
