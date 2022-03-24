@@ -1,5 +1,5 @@
 function loadQuestions() {
-  fetch("/mocked/questions.json")
+  fetch("/js/datas/questions.json")
     .then((response) => response.json())
     .then((response) => {
       // get Json
@@ -10,7 +10,7 @@ function loadQuestions() {
 }
 
 function loadResult() {
-    fetch("/mocked/results.json")
+    fetch("/js/datas/results.json")
     .then((response) => response.json())
     .then((response) => {
       // get Json

@@ -1,39 +1,40 @@
-import Question from "./feature/questions.js";
-import Carousel from "./feature/carousel.js";
-import Cursor from "./feature/cursor.js"
+import Question from "./feature/Questions.js";
+import Carousel from "./feature/carousel/Carousel.js";
+import { appendCursor, moveCursor } from "./feature/cursor/cursor.js";
 import { loadQuestions, loadResult } from "./services/load.js";
 import { sortResults } from "./services/sortResults.js";
 
 window.onload = () => {
   loadQuestions();
   loadResult();
-  sessionStorage.setItem('userChoices', '[]')
+  sessionStorage.setItem("userChoices", "[]");
   const firstQ = new Question(-1, []);
   firstQ.appendFirst();
   firstQ.handleClick();
 };
 
 const main = document.getElementById("main");
+const questions = document.querySelector(".questions")
 
 // ajouter parent
 function nextStep(currentPos) {
   // datas
   const resultDatas = JSON.parse(sessionStorage.getItem("resultsItem"));
   const questionDatas = JSON.parse(sessionStorage.getItem("questionsItem"));
-  const userChoices = JSON.parse(sessionStorage.getItem("userChoices"))
-  
+  const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
+
   const currentQuestion = questionDatas[currentPos];
 
   if (currentQuestion.final) {
     // sort result data
     const results = sortResults(resultDatas, userChoices);
-    // add carousel
+    // set carousel
     const carousel = new Carousel(results);
     carousel.appendResults();
-    carousel.rotateLeft()
+    carousel.rotateLeft();
   } else {
-    // add a new question
-    const NewQuestion = new Question(
+    // set a new question
+    const newQuestion = new Question(
       currentPos,
       currentQuestion.question,
       currentQuestion.qMulti,
@@ -41,28 +42,27 @@ function nextStep(currentPos) {
       currentQuestion.choices.parent,
       questionDatas
     );
-    NewQuestion.appendBtn();
-    NewQuestion.handleClick();
-  }
-
+    newQuestion.appendBtn(currentPos);
+    newQuestion.handleClick(currentPos);
     // add cursor
-    if(currentPos === 0){
-      const maxPos = questionDatas.length;
-      const cursor = new Cursor(currentPos, questionDatas);
-      cursor.appendCursor();
+    if (currentPos === 0) {
+      appendCursor(questionDatas);
       // cursor.handleClick();
-    }else{
-      // cursor.moveCursor(currentPos)
+    } else {
+      moveCursor();
     }
+  }
 }
 
-function stepBack() {}
+function stepBack() {
+  
+}
 
 function setUserChoice(btnValue) {
-  const userChoices = JSON.parse(sessionStorage.getItem("userChoices"))
+  const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
   if (userChoices.indexOf(btnValue) === -1) {
     userChoices.push(btnValue);
-    sessionStorage.setItem('userChoices', JSON.stringify(userChoices))
+    sessionStorage.setItem("userChoices", JSON.stringify(userChoices));
   }
 }
 

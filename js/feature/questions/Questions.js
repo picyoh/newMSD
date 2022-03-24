@@ -1,5 +1,6 @@
 import { nextStep } from "../index.js";
-import { setUserChoice } from '../index.js'
+import { setUserChoice } from "../index.js";
+import { loadQuestions } from "../services/load.js";
 
 class Question {
   constructor(number, question, qMulti, choices, parent) {
@@ -12,20 +13,22 @@ class Question {
 
   appendFirst() {
     const first = `
-      <section class="question">
+    <section class="questions">
+      <div class="question0">
         <h2>Découvrez votre souris</h2>
         <div class="answerGroup">
           <button class="firstAnswer answer">Go !</button>
         </div>
-      </section>
+      </div>
+    </section>
       `;
     main.insertAdjacentHTML("beforeend", first);
   }
 
-  appendBtn() {
-    const userChoices = JSON.parse(sessionStorage.getItem("userChoices"))
+  appendBtn(currentPos) {
+    const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
     const button = `
-            <section class="question">
+            <div class="question${currentPos + 1}">
             ${
               this.question === undefined
                 ? this.qMulti
@@ -55,26 +58,34 @@ class Question {
                 })
                 .join("")}
               </div>
-            </section>
+            </div>
         `;
     main.insertAdjacentHTML("beforeend", button);
   }
 
-  handleClick() {
-    const question = document.querySelector(".question");
+  handleClick(currentPos) {
     const answers = document.querySelectorAll(".answer");
     answers.forEach((answer) => {
       answer.addEventListener("click", (e) => {
+        e.stopPropagation;
+        let pos;
         if (e.target.id !== "") {
           setUserChoice(e.target.id);
         }
-        main.removeChild(question);
+        if(currentPos === undefined){
+          pos = 0
+        }else{
+          pos = currentPos + 1
+        }
+        const toRemove = '.question' + pos;
+        console.log(toRemove)
         this.number++;
         nextStep(this.number);
-        e.stopPropagation;
+        const previousQuestion = document.querySelector(toRemove);
+        previousQuestion.className = toRemove + " hidden"
       });
     });
   }
 }
 
-export default Question
+export default Question;
