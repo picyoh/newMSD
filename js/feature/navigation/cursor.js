@@ -13,7 +13,7 @@ export const appendCursor = (questionDatas) => {
           .join("")}
         </div>
         `;
-  questions.insertAdjacentHTML("beforebegin", cursor);
+  content.insertAdjacentHTML("afterbegin", cursor);
   moveCursor(0);
 };
 

@@ -12,19 +12,21 @@ class Question {
 
   appendFirst() {
     const first = `
-    <section id="questions">
-      <div id="question0" class="question">
-        <h2>Découvrez votre souris</h2>
-        <div class="answerGroup">
-          <button class="firstAnswer answer">Go !</button>
+    <section id="content">
+      <div id="questions">
+        <div id="question0" class="question">
+          <h2>Découvrez votre souris</h2>
+          <div class="answerGroup">
+            <button class="firstAnswer answer">Go !</button>
+          </div>
         </div>
       </div>
     </section>
       `;
-    main.insertAdjacentHTML("beforeend", first);
+    document.querySelector("#main").insertAdjacentHTML("beforeend", first);
   }
 
-  appendBtn() {
+  appendQuestion() {
     const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
     const button = `
             <div id="question${this.number + 1}" class="question">

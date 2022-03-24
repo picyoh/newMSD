@@ -9,9 +9,9 @@ window.onload = () => {
   const firstQ = new Question(-1, []);
   firstQ.appendFirst();
   firstQ.handleClick();
+  firstQ.appendNavBtn;
 };
-
-const main = document.querySelector("#main");
+const content = document.querySelector("#content");
 const questions = document.querySelector("#questions");
 
 function setUserChoice(btnValue) {

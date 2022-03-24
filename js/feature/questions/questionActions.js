@@ -1,6 +1,7 @@
 import Question from "./Questions.js";
 import Carousel from "../carousel/Carousel.js";
-import { appendCursor, moveCursor } from "../cursor/cursor.js";
+import { appendCursor, moveCursor } from "../navigation/cursor.js";
+import { appendNavBtn } from "../navigation/navBtn.js";
 import { sortResults } from "../../services/sortResults.js";
 
 export const nextStep = (currentPos) => {
@@ -30,11 +31,12 @@ export const nextStep = (currentPos) => {
       currentQuestion.choices.parent,
       questionDatas
     );
-    newQuestion.appendBtn();
+    newQuestion.appendQuestion();
     newQuestion.handleClick();
     // add cursor
     if (currentPos === 0) {
       appendCursor(questionDatas);
+      appendNavBtn();
       // cursor.handleClick();
     } else {
       moveCursor(currentPos);
