@@ -1,6 +1,5 @@
-import { nextStep } from "../index.js";
-import { setUserChoice } from "../index.js";
-import { loadQuestions } from "../services/load.js";
+import { nextStep, stepBack } from "./questionActions.js";
+import { setUserChoice } from "../../index.js";
 
 class Question {
   constructor(number, question, qMulti, choices, parent) {
@@ -13,8 +12,8 @@ class Question {
 
   appendFirst() {
     const first = `
-    <section class="questions">
-      <div class="question0">
+    <section id="questions">
+      <div id="question0" class="question">
         <h2>Découvrez votre souris</h2>
         <div class="answerGroup">
           <button class="firstAnswer answer">Go !</button>
@@ -25,10 +24,10 @@ class Question {
     main.insertAdjacentHTML("beforeend", first);
   }
 
-  appendBtn(currentPos) {
+  appendBtn() {
     const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
     const button = `
-            <div class="question${currentPos + 1}">
+            <div id="question${this.number + 1}" class="question">
             ${
               this.question === undefined
                 ? this.qMulti
@@ -60,10 +59,10 @@ class Question {
               </div>
             </div>
         `;
-    main.insertAdjacentHTML("beforeend", button);
+    questions.insertAdjacentHTML("beforeend", button);
   }
 
-  handleClick(currentPos) {
+  handleClick() {
     const answers = document.querySelectorAll(".answer");
     answers.forEach((answer) => {
       answer.addEventListener("click", (e) => {
@@ -72,17 +71,11 @@ class Question {
         if (e.target.id !== "") {
           setUserChoice(e.target.id);
         }
-        if(currentPos === undefined){
-          pos = 0
-        }else{
-          pos = currentPos + 1
-        }
-        const toRemove = '.question' + pos;
-        console.log(toRemove)
         this.number++;
         nextStep(this.number);
+        const toRemove = "#question" + this.number;
         const previousQuestion = document.querySelector(toRemove);
-        previousQuestion.className = toRemove + " hidden"
+        previousQuestion.className = "hidden";
       });
     });
   }

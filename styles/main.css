@@ -88,13 +88,17 @@ nav ul li {
     width: 75%;
     height: 3vh;
     margin: 2rem;
-    background-color: blue;
+    background-color: lightgray;
     display: flex;
 }
 
 .cursor{
     flex-grow: 1;
     border: 1px solid white;
+}
+
+.active{
+    background-color: lightblue;
 }
 
 .hide {

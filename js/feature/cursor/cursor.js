@@ -4,20 +4,22 @@ export const appendCursor = (questionDatas) => {
         ${questionDatas
           .map((question, index) => {
             if (index === 0) {
-              return `<span class="cursor ${index} active"></span>`;
+              return `<span id="cursor${index}" class="cursor"></span>`;
             }
             return `
-            <span class="cursor ${index}"></span>
+            <span id="cursor${index}" class="cursor"></span>
             `;
           })
           .join("")}
         </div>
         `;
-  main.insertAdjacentHTML("beforeend", cursor);
+  questions.insertAdjacentHTML("beforebegin", cursor);
+  moveCursor(0);
 };
 
-export const moveCursor = () => {
-  const active = document.querySelector(".active");
-  console.log(active);
-  // TODO: add css to cursor
+export const moveCursor = (currentPos) => {
+  const pos = "#cursor" + currentPos;
+  const currentCursor = document.querySelector(pos);
+  currentCursor.className = "cursor active";
+  // TODO:reculer curseur
 };

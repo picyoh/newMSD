@@ -41,7 +41,7 @@ class Carousel {
     main.insertAdjacentHTML("beforeend", carousel);
   }
 
-  rotateLeft() {
+  moveLeft() {
     const topLeft = document.querySelector('#topLeft');
     topLeft.addEventListener('click', (e)=>{
 
@@ -53,7 +53,7 @@ class Carousel {
     })
   }
 
-  rotateRight() {}
+  moveRight() {}
 }
 
 export default Carousel;
