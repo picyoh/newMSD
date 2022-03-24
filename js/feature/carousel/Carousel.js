@@ -38,7 +38,7 @@ class Carousel {
         </div>
       </section>
         `;
-    main.insertAdjacentHTML("beforeend", carousel);
+    content.insertAdjacentHTML("beforeend", carousel);
   }
 
   moveLeft() {

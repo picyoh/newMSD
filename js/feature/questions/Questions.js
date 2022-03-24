@@ -14,7 +14,7 @@ class Question {
     const first = `
     <section id="content">
       <div id="questions">
-        <div id="question0" class="question">
+        <div id="question0" class="question firstQuestion">
           <h2>Découvrez votre souris</h2>
           <div class="answerGroup">
             <button class="firstAnswer answer">Go !</button>

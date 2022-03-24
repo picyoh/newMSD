@@ -89,20 +89,19 @@ nav ul li {
     margin :3rem;
 }
 
+.firstQuestion{
+    min-height: 50vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .answerGroup {
     max-width: 80%;
     display: flex;
     justify-content: space-evenly;
 }
-
-.firstAnswer {
-    max-width: 5vw;
-    align-self: center;
-}
-
-/* .answer {
-
-} */
 
 .navBtn {
     width: 70%;
