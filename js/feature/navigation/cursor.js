@@ -19,7 +19,10 @@ export const appendCursor = (questionDatas) => {
 
 export const moveCursor = (currentPos) => {
   const pos = "#cursor" + currentPos;
-  const currentCursor = document.querySelector(pos);
-  currentCursor.className = "cursor active";
-  // TODO:reculer curseur
+  const currentCursor = document.querySelector(pos).classList.add('active')
+};
+
+export const removeCursor = (currentPos) => {
+  const pos = "#cursor" + currentPos - 1;
+  const currentCursor = document.querySelector(pos).classList.remove('active')
 };

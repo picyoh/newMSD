@@ -69,15 +69,15 @@ class Question {
     answers.forEach((answer) => {
       answer.addEventListener("click", (e) => {
         e.stopPropagation;
-        let pos;
         if (e.target.id !== "") {
           setUserChoice(e.target.id);
         }
         this.number++;
         nextStep(this.number);
         const toRemove = "#question" + this.number;
-        const previousQuestion = document.querySelector(toRemove);
-        previousQuestion.className = "hidden";
+        console.log(toRemove)
+        // TODO: if classList.contains("hidden")
+        document.querySelector(toRemove).classList.add("hidden");
       });
     });
   }

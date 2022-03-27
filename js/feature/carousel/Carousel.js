@@ -22,7 +22,7 @@ class Carousel {
     };
 
     const carousel = `
-      <section class="carousel">
+      <div class="carousel">
         <h2>Resultats</h2>
         <div class="carouselContainer">
       ${this.results
@@ -36,7 +36,7 @@ class Carousel {
         })
         .join("")}
         </div>
-      </section>
+      </div>
         `;
     content.insertAdjacentHTML("beforeend", carousel);
   }

@@ -57,7 +57,7 @@ nav ul li {
     min-height: 60vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 
 }
@@ -65,7 +65,7 @@ nav ul li {
 .cursorContainer {
     width: 80%;
     height: 2vh;
-    margin: 2rem;
+    margin-bottom: 15vh;
     background-color: lightgray;
     display: flex;
 }
@@ -80,35 +80,54 @@ nav ul li {
 }
 
 #questions{
+    max-width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.question{
-    margin :3rem;
-}
-
-.firstQuestion{
-    min-height: 50vh;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
     align-items: center;
 }
 
+.question{
+
+    margin: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question h2 {
+    flex: 100%;
+    width: max-content;
+}
+
+.firstQuestion{
+    min-height: 40vh;
+    justify-content: center;
+}
+
+.firstQuestion h2{
+    flex: 0;
+}
+
 .answerGroup {
-    max-width: 80%;
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
 }
 
+.answer img{
+    max-width: 18vw;
+    margin: 2rem;
+    padding: 2rem;
+    border: 1px solid lightgrey;
+    border-radius: 2rem;
+}
+
 .navBtn {
     width: 70%;
-    padding: 2rem 0;
+    margin-top: 15vh;
     display: flex;
     justify-content: space-between;
-
 }
 
 footer {
