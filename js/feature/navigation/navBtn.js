@@ -1,3 +1,5 @@
+import { removeCursor } from "./cursor.js";
+
 export const appendNavBtn = () => {
   const navBtn = `
       <div class="navBtn">
@@ -23,6 +25,8 @@ export const handlePrevious = () => {
         // remove hidden to previous question
         document.querySelector(previousQuestion).classList.remove("hidden")
         // TODO: removeCursor
+        console.log(previousNumber)
+        removeCursor(previousNumber)
       }
     })
   });

@@ -4,6 +4,25 @@ import { appendCursor, moveCursor } from "../navigation/cursor.js";
 import { appendNavBtn, handlePrevious } from "../navigation/navBtn.js";
 import { sortResults } from "../../services/sortResults.js";
 
+export const handleClick = () => {
+  const answers = document.querySelectorAll(".answer");
+  answers.forEach((answer) => {
+    answer.addEventListener("click", (e) => {
+      e.stopPropagation;
+      if (e.target.id !== "") {
+        setUserChoice(e.target.id);
+      }
+      this.number++;
+      console.log(this.number);
+      nextStep(this.number);
+      const toRemove = "#question" + this.number;
+      console.log({ number: this.number, toRemove: toRemove });
+      // TODO: if classList.contains("hidden")
+      document.querySelector(toRemove).classList.add("hidden");
+    });
+  });
+};
+
 export const nextStep = (currentPos) => {
   // datas
   const resultDatas = JSON.parse(sessionStorage.getItem("resultsItem"));

@@ -1,17 +1,5 @@
-import { nextStep, stepBack } from "./questionActions.js";
-import { setUserChoice } from "../../index.js";
-
-class Question {
-  constructor(number, question, qMulti, choices, parent) {
-    this.number = number;
-    this.question = question;
-    this.qMulti = qMulti;
-    this.choices = choices;
-    this.parent = parent;
-  }
-
-  appendFirst() {
-    const first = `
+export const appendFirstQuestion = () => {
+  const first = `
     <section id="content">
       <div id="questions">
         <div id="question0" class="question firstQuestion">
@@ -23,12 +11,12 @@ class Question {
       </div>
     </section>
       `;
-    document.querySelector("#main").insertAdjacentHTML("beforeend", first);
-  }
+  document.querySelector("#main").insertAdjacentHTML("beforeend", first);
+};
 
-  appendQuestion() {
-    const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
-    const button = `
+export const appendQuestion = () => {
+  const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
+  const button = `
             <div id="question${this.number + 1}" class="question">
             ${
               this.question === undefined
@@ -61,26 +49,5 @@ class Question {
               </div>
             </div>
         `;
-    questions.insertAdjacentHTML("beforeend", button);
-  }
-
-  handleClick() {
-    const answers = document.querySelectorAll(".answer");
-    answers.forEach((answer) => {
-      answer.addEventListener("click", (e) => {
-        e.stopPropagation;
-        if (e.target.id !== "") {
-          setUserChoice(e.target.id);
-        }
-        this.number++;
-        nextStep(this.number);
-        const toRemove = "#question" + this.number;
-        console.log({number: this.number, toRemove: toRemove})
-        // TODO: if classList.contains("hidden")
-        document.querySelector(toRemove).classList.add("hidden");
-      });
-    });
-  }
-}
-
-export default Question;
+  questions.insertAdjacentHTML("beforeend", button);
+};
