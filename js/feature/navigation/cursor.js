@@ -17,8 +17,8 @@ export const appendCursor = (questionDatas) => {
   moveCursor(0);
 };
 
-export const moveCursor = (currentPos) => {
-  const pos = "#cursor" + currentPos;
+export const moveCursor = (currentIndex) => {
+  const pos = "#cursor" + currentIndex;
   const currentCursor = document.querySelector(pos).classList.add('active')
 };
 

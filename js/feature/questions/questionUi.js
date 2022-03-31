@@ -14,23 +14,26 @@ export const appendFirstQuestion = () => {
   document.querySelector("#main").insertAdjacentHTML("beforeend", first);
 };
 
-export const appendQuestion = () => {
+export const appendQuestion = (currentIndex) => {
+  const currentQuestion = JSON.parse(sessionStorage.getItem("questionsItem"))[currentIndex];
+  console.log(currentQuestion)
   const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
+  
   const button = `
-            <div id="question${this.number + 1}" class="question">
+            <div id="question${currentIndex + 1}" class="question">
             ${
-              this.question === undefined
-                ? this.qMulti
+              currentQuestion.question === undefined
+                ? currentQuestion.qMulti
                     .map((element) => {
                       if (userChoices.indexOf(element.parent) > -1) {
                         return `<h2>${element.question}</h2>`;
                       }
                     })
                     .join("")
-                : `<h2>${this.question}</h2>`
+                : `<h2>${currentQuestion.question}</h2>`
             }
             <div class="answerGroup">
-              ${this.choices
+              ${currentQuestion.choices
                 .map((choice) => {
                   if (choice.src !== undefined) {
                     return `

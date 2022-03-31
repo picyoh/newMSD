@@ -1,6 +1,5 @@
-import { appendFirstQuestion, appendQuestion } from "./feature/questions/questionUi.js";
-import { handleQuestionClick, nextStep, stepBack } from "./feature/questions/questionActions.js";
-import { appendNavBtn } from "./feature/navigation/navBtn.js";
+import { appendFirstQuestion } from "./feature/questions/questionUi.js";
+import { handleQuestionClick } from "./feature/questions/questionActions.js";
 
 import { loadQuestions, loadResult } from "./services/load.js";
 
@@ -12,15 +11,14 @@ window.onload = () => {
   appendFirstQuestion();
   handleQuestionClick();
 };
+
 const content = document.querySelector("#content");
 const questions = document.querySelector("#questions");
 
-function setUserChoice(btnValue) {
+export const setUserChoice = (btnValue) => {
   const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
   if (userChoices.indexOf(btnValue) === -1) {
     userChoices.push(btnValue);
     sessionStorage.setItem("userChoices", JSON.stringify(userChoices));
   }
 }
-
-export { setUserChoice };
