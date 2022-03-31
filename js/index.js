@@ -10,7 +10,7 @@ window.onload = () => {
   sessionStorage.setItem("currentIndex", "0");
   sessionStorage.setItem("userChoices", "[]");
   appendFirstQuestion();
-  handleQuestionClick(sessionStorage.getItem("currentIndex"));
+  handleQuestionClick();
 };
 const content = document.querySelector("#content");
 const questions = document.querySelector("#questions");

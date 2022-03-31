@@ -4,18 +4,22 @@ import { appendCursor, moveCursor } from "../navigation/cursor.js";
 import { appendNavBtn, handlePrevious } from "../navigation/navBtn.js";
 import { sortResults } from "../../services/sortResults.js";
 
-export const handleQuestionClick = (currentIndex) => {
+export const handleQuestionClick = () => {
   const answers = document.querySelectorAll(".answer");
   answers.forEach((answer) => {
     answer.addEventListener("click", (e) => {
       e.stopPropagation;
+      // set userChoice
       if (e.target.id !== "") {
         setUserChoice(e.target.id);
       }
+      // get currentIndex
+      let currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
+      // lauch nextStep
+      nextStep(currentIndex);
+      const toRemove = "#question" + currentIndex;
       sessionStorage.setItem("currentIndex", currentIndex++);
-      nextStep(sessionStorage.getItem("currentIndex"));
-      const toRemove = "#question" + this.number;
-      console.log({ number: this.number, toRemove: toRemove });
+      console.log({ number: currentIndex, toRemove: toRemove });
       // TODO: if classList.contains("hidden")
       document.querySelector(toRemove).classList.add("hidden");
     });
