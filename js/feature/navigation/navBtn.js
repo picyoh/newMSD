@@ -20,13 +20,12 @@ export const handlePrevious = () => {
         const previousNumber = question.id.slice(-1) -1
         const previousQuestion = "#question" + previousNumber;
         console.log(previousQuestion)
-        // add hidden to current question
+        // remove current question
         question.remove()
         // remove hidden to previous question
         document.querySelector(previousQuestion).classList.remove("hidden")
-        // TODO: removeCursor
-        console.log(previousNumber)
         removeCursor(previousNumber)
+        sessionStorage.setItem("currentIndex", previousNumber)
       }
     })
   });

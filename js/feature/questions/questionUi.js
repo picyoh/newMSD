@@ -16,7 +16,6 @@ export const appendFirstQuestion = () => {
 
 export const appendQuestion = (currentIndex) => {
   const currentQuestion = JSON.parse(sessionStorage.getItem("questionsItem"))[currentIndex];
-  console.log(currentQuestion)
   const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
   
   const button = `

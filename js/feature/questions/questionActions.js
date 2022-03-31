@@ -23,8 +23,8 @@ export const handleQuestionClick = () => {
       const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
       // lauch nextStep
       nextStep(currentIndex);
-      const toHide = "#question" + currentIndex;
       // TODO: if classList.contains("hidden")
+      const toHide = "#question" + currentIndex;
       document.querySelector(toHide).classList.add("hidden");
     });
   });
