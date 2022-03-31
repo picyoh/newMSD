@@ -4,7 +4,7 @@ import { appendCursor, moveCursor } from "../navigation/cursor.js";
 import { appendNavBtn, handlePrevious } from "../navigation/navBtn.js";
 import { sortResults } from "../../services/sortResults.js";
 
-export const handleClick = () => {
+export const handleQuestionClick = (currentIndex) => {
   const answers = document.querySelectorAll(".answer");
   answers.forEach((answer) => {
     answer.addEventListener("click", (e) => {
@@ -12,9 +12,8 @@ export const handleClick = () => {
       if (e.target.id !== "") {
         setUserChoice(e.target.id);
       }
-      this.number++;
-      console.log(this.number);
-      nextStep(this.number);
+      sessionStorage.setItem("currentIndex", currentIndex++);
+      nextStep(sessionStorage.getItem("currentIndex"));
       const toRemove = "#question" + this.number;
       console.log({ number: this.number, toRemove: toRemove });
       // TODO: if classList.contains("hidden")

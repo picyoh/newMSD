@@ -1,18 +1,16 @@
-import Question from "./feature/questions/Questions.js";
-import { appendFirstQuestion } from "./feature/questions/questionUi.js";
+import { appendFirstQuestion, appendQuestion } from "./feature/questions/questionUi.js";
+import { handleQuestionClick, nextStep, stepBack } from "./feature/questions/questionActions.js";
+import { appendNavBtn } from "./feature/navigation/navBtn.js";
 
 import { loadQuestions, loadResult } from "./services/load.js";
 
 window.onload = () => {
   loadQuestions();
   loadResult();
-  sessionStorage.setItem("index", "0");
+  sessionStorage.setItem("currentIndex", "0");
   sessionStorage.setItem("userChoices", "[]");
   appendFirstQuestion();
-  // const firstQ = new Question(-1, []);
-  // firstQ.appendFirst();
-  // firstQ.handleClick();
-  // firstQ.appendNavBtn();
+  handleQuestionClick(sessionStorage.getItem("currentIndex"));
 };
 const content = document.querySelector("#content");
 const questions = document.querySelector("#questions");
