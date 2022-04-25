@@ -13,24 +13,30 @@ import { setUserChoice } from "../../index.js";
 export const handleQuestionClick = () => {
   const answers = document.querySelectorAll(".answer");
   answers.forEach((answer) => {
-    answer.addEventListener("click", (e) => {
-      e.stopPropagation;
-      // set userChoice
-      if (e.target.id !== "") {
-        setUserChoice(e.target.id);
-      }
-      // get index
-      const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
-      // lauch nextStep
-      nextStep(currentIndex);
-      // TODO: if classList.contains("hidden")
-      const toHide = "#question" + currentIndex;
-      document.querySelector(toHide).classList.add("hidden");
-    }, {once: true});
+    answer.addEventListener(
+      "click",
+      (e) => {
+        e.stopPropagation;
+        // set userChoice
+        if (e.target.id !== "") {
+          setUserChoice(e.target.id);
+        }
+        // get index
+        const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
+        // lauch nextStep
+        nextStep(currentIndex);
+      },
+      { once: true }
+    );
   });
 };
 
 export const nextStep = (currentIndex) => {
+  if
+  // hide current question
+  const toHide = "#question" + currentIndex;
+  console.log(toHide)
+  document.querySelector(toHide).classList.add("hidden");
   // datas
   const resultDatas = JSON.parse(sessionStorage.getItem("resultsItem"));
   const questionDatas = JSON.parse(sessionStorage.getItem("questionsItem"));
@@ -44,7 +50,7 @@ export const nextStep = (currentIndex) => {
     // set a new question
     appendQuestion(currentIndex);
     handleQuestionClick();
-    // add cursor
+    // add cursor for the first question
     if (currentIndex === 0) {
       appendCursor(questionDatas);
       appendNavBtn();
