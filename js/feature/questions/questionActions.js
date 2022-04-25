@@ -26,7 +26,7 @@ export const handleQuestionClick = () => {
       // TODO: if classList.contains("hidden")
       const toHide = "#question" + currentIndex;
       document.querySelector(toHide).classList.add("hidden");
-    });
+    }, {once: true});
   });
 };
 
