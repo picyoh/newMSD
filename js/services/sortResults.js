@@ -1,4 +1,4 @@
-function sortResults(datas, userChoices) {
+function sortResults(datas, userChoices, questionsLength) {
   const maxLength = 6;
   let userResults = [];
   let highScore = 0;
@@ -8,10 +8,10 @@ function sortResults(datas, userChoices) {
     let score = parseInt(result.value);
     const tags = result.tags;
     // add score for each tags matching
+    const fraction = questionsLength;
     tags.forEach((tag) => {
       if (userChoices.indexOf(tag) > -1) {
-        //   TODO:implementer fraction questions
-        score += 10;
+        score += fraction;
       }
     });
     // console.log(score);

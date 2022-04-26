@@ -16,6 +16,7 @@ const content = document.querySelector("#content");
 const questions = document.querySelector("#questions");
 
 export const setUserChoice = (btnValue) => {
+  // TODO: check datas / position in question to replace if its necessary
   const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
   if (userChoices.indexOf(btnValue) === -1) {
     userChoices.push(btnValue);
