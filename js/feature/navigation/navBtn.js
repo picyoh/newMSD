@@ -1,3 +1,4 @@
+import { nextStep } from "../questions/questionActions.js";
 import { removeCursor } from "./cursor.js";
 
 export const appendNavBtn = () => {
@@ -14,19 +15,30 @@ export const handlePrevious = () => {
   const previousBtn = document.querySelector(".previous");
   previousBtn.addEventListener("click", () => {
     const questions = document.querySelectorAll(".question");
-    questions.forEach((question)=>{
-      if(question.classList.contains('hidden') === false){
+    questions.forEach((question) => {
+      if (question.classList.contains("hidden") === false) {
         // get previous number
-        const previousNumber = question.id.slice(-1) -1
-        const previousQuestion = "#question" + previousNumber;
-        console.log(previousQuestion)
+        const previousIndex = question.id.slice(-1) - 1;
+        const previousQuestion = "#question" + previousIndex;
         // remove current question
-        question.remove()
+        question.remove();
+        handleNext();
         // remove hidden to previous question
-        document.querySelector(previousQuestion).classList.remove("hidden")
-        removeCursor(previousNumber)
-        sessionStorage.setItem("currentIndex", previousNumber)
+        document.querySelector(previousQuestion).classList.remove("hidden");
+        removeCursor(previousIndex);
+        sessionStorage.setItem("currentIndex", previousIndex);
       }
-    })
+    });
   });
+};
+
+export const handleNext = () => {
+  // enable next button
+  const nextButton = document.querySelector(".next");
+  nextButton.removeAttribute("disabled");
+  nextButton.addEventListener("click", (e) => {
+    const nextStepIndex = parseInt(sessionStorage.getItem("currentIndex"));
+    console.log(nextStepIndex);
+    nextStep(nextStepIndex);
+  }, {once: true});
 };

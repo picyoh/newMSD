@@ -32,19 +32,16 @@ export const handleQuestionClick = () => {
 };
 
 export const nextStep = (currentIndex) => {
-  if
   // hide current question
   const toHide = "#question" + currentIndex;
-  console.log(toHide)
   document.querySelector(toHide).classList.add("hidden");
   // datas
   const resultDatas = JSON.parse(sessionStorage.getItem("resultsItem"));
   const questionDatas = JSON.parse(sessionStorage.getItem("questionsItem"));
   const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
-
   const currentQuestion = questionDatas[currentIndex];
-
   if (currentQuestion.final) {
+    // set a carousel
     setCarousel();
   } else {
     // set a new question
@@ -56,8 +53,15 @@ export const nextStep = (currentIndex) => {
       appendNavBtn();
       handlePrevious();
     } else {
+      // move cursor
       moveCursor(currentIndex);
+      // disable nextButton
+      const nextButton = document.querySelector(".next");
+      if (nextButton.hasAttribute("disabled") === false) {
+        nextButton.setAttribute("disabled", "");
+      }
     }
+    // store index
     sessionStorage.setItem("currentIndex", currentIndex + 1);
   }
 };
