@@ -177,7 +177,7 @@ footer {
   display: flex;
   flex-flow: row wrap;
 }
-
+/* TODO: add padding inside results (eventually an img container) */
 .results {
   position: relative;
   flex: 33%;
@@ -199,13 +199,12 @@ footer {
   margin-bottom: 0;
 }
 
-.results::before {
+.podium {
   position: absolute;
   content: "";
   z-index: -1;
   bottom: 0;
   width: 100%;
-  min-height: 10%;
   background-color: var(--secondary-color);
 }
 
