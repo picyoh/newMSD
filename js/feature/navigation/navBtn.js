@@ -1,4 +1,4 @@
-import { nextStep } from "../questions/questionActions.js";
+import { nextStep, stepBack } from "../questions/questionActions.js";
 import { removeCursor } from "./cursor.js";
 
 export const appendNavBtn = () => {
@@ -12,32 +12,47 @@ export const appendNavBtn = () => {
 };
 
 export const handlePrevious = () => {
+  // get previous button
   const previousBtn = document.querySelector(".previous");
-  previousBtn.addEventListener("click", () => {
-    const questions = document.querySelectorAll(".question");
-    questions.forEach((question) => {
-      if (question.classList.contains("hidden") === false) {
-        // get previous number
-        const previousIndex = question.id.slice(-1) - 1;
-        const previousQuestion = "#question" + previousIndex;
-        // remove current question
-        question.remove();
-        handleNext();
-        // remove hidden to previous question
-        document.querySelector(previousQuestion).classList.remove("hidden");
-        removeCursor(previousIndex);
-      }
-    });
+  previousBtn.addEventListener("click", (e) => {
+    // get current index
+    const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
+    if (currentIndex > 0) {
+      stepBack();
+      sessionStorage.setItem("currentIndex", currentIndex - 1);
+    } else {
+      previousBtn.setAttribute("disabled", "");
+    }
+    // trigger next btn
+    if (document.querySelector(".next").hasAttribute("disabled") === true)
+      handleNext();
   });
 };
 
 export const handleNext = () => {
-  // enable next button
   const nextButton = document.querySelector(".next");
-  nextButton.removeAttribute("disabled");
+  // adjust current Index
+  const currentIndex = parseInt(sessionStorage.getItem("currentIndex")) + 1;
+  // get user choices length
+  const userChoicesLength = JSON.parse(
+    sessionStorage.getItem("userChoices")
+  ).length;
+  if (currentIndex < userChoicesLength) {
+    // enable next button
+    nextButton.removeAttribute("disabled");
+  }
+
+  // console.log(currentIndex, userChoicesLength);
+
   nextButton.addEventListener("click", (e) => {
-    const nextStepIndex = JSON.parse(sessionStorage.getItem("userChoices")).length;
-    console.log(nextStepIndex);
-    nextStep(nextStepIndex);
-  }, {once: true});
+    if (currentIndex < userChoicesLength) {
+      // go next
+      sessionStorage.setItem("currentIndex", currentIndex);
+      // lauch nextStep
+      nextStep();
+    } else {
+      // disable next button
+      nextButton.setAttribute("disabled", "");
+    }
+  });
 };
