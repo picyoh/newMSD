@@ -6,7 +6,7 @@ import { loadQuestions, loadResult } from "./services/load.js";
 window.onload = () => {
   loadQuestions();
   loadResult();
-  sessionStorage.setItem("currentIndex", "0");
+  // TODO: change current Index by userChoices.length
   sessionStorage.setItem("userChoices", "[]");
   appendFirstQuestion();
   handleQuestionClick();

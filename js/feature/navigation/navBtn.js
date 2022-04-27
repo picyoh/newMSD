@@ -26,7 +26,6 @@ export const handlePrevious = () => {
         // remove hidden to previous question
         document.querySelector(previousQuestion).classList.remove("hidden");
         removeCursor(previousIndex);
-        sessionStorage.setItem("currentIndex", previousIndex);
       }
     });
   });
@@ -37,7 +36,7 @@ export const handleNext = () => {
   const nextButton = document.querySelector(".next");
   nextButton.removeAttribute("disabled");
   nextButton.addEventListener("click", (e) => {
-    const nextStepIndex = parseInt(sessionStorage.getItem("currentIndex"));
+    const nextStepIndex = JSON.parse(sessionStorage.getItem("userChoices")).length;
     console.log(nextStepIndex);
     nextStep(nextStepIndex);
   }, {once: true});

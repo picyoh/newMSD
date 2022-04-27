@@ -22,7 +22,7 @@ export const moveCursor = (currentIndex) => {
   const currentCursor = document.querySelector(pos).classList.add('active')
 };
 
-export const removeCursor = (previousNumber) => {
-  const pos = "#cursor" + previousNumber;
+export const removeCursor = (previousIndex) => {
+  const pos = "#cursor" + previousIndex;
   const currentCursor = document.querySelector(pos).classList.remove('active')
 };
