@@ -6,7 +6,6 @@ import { loadQuestions, loadResult } from "./services/load.js";
 window.onload = () => {
   loadQuestions();
   loadResult();
-  // TODO: change current Index by userChoices.length
   sessionStorage.setItem("userChoices", "[]");
   appendFirstQuestion();
   handleQuestionClick();
@@ -15,9 +14,14 @@ window.onload = () => {
 const content = document.querySelector("#content");
 const questions = document.querySelector("#questions");
 
-export const setUserChoice = (btnValue) => {
+export const setUserChoice = (target) => {
   // TODO: check datas / position in question to replace if its necessary
+  const btnValue = target.id;
+  const questionId = target.parent;
+  // console.log(questionId, "coucou")
+  // get userChoices & index
   const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
+  // check whether element exist in array
   if (userChoices.indexOf(btnValue) === -1) {
     userChoices.push(btnValue);
     sessionStorage.setItem("userChoices", JSON.stringify(userChoices));

@@ -17,7 +17,7 @@ export const appendFirstQuestion = () => {
 export const appendQuestion = (currentIndex) => {
   const currentQuestion = JSON.parse(sessionStorage.getItem("questionsItem"))[currentIndex];
   const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
-  
+  // TODO: replace space by _ on btn Id
   const button = `
             <div id="question${currentIndex + 1}" class="question">
             ${

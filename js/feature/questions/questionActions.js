@@ -16,11 +16,11 @@ export const handleQuestionClick = () => {
     answer.addEventListener(
       "click",
       (e) => {
-        e.stopPropagation;
         // set userChoice
-        if (e.target.id !== "") {
-          setUserChoice(e.target.id);
-        }
+        if (e.target.id !== "") setUserChoice(e.target);
+        // set current index
+        const currentIndex = e.target.parentNode.parentNode.id.slice(-1);
+        sessionStorage.setItem("currentIndex", currentIndex);
         // lauch nextStep
         nextStep();
       },
@@ -31,19 +31,15 @@ export const handleQuestionClick = () => {
 
 export const nextStep = () => {
   // get index
-  const currentIndex = JSON.parse(sessionStorage.getItem("userChoices")).length;
+  const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
   console.log(currentIndex);
-
   // hide current question
   const toHide = "#question" + currentIndex;
   document.querySelector(toHide).classList.add("hidden");
-
   // datas
-  const resultDatas = JSON.parse(sessionStorage.getItem("resultsItem"));
   const questionDatas = JSON.parse(sessionStorage.getItem("questionsItem"));
-  const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
   const currentQuestion = questionDatas[currentIndex];
-
+  // set next
   if (currentQuestion.final) {
     // set a carousel
     setCarousel();
@@ -52,20 +48,28 @@ export const nextStep = () => {
     appendQuestion(currentIndex);
     handleQuestionClick();
     if (currentIndex === 0) {
-      // add cursor for the first question
+      // add navigation
       appendCursor(questionDatas);
       appendNavBtn();
       handlePrevious();
     } else {
       // move cursor
       moveCursor(currentIndex);
-      // disable nextButton
-      const nextButton = document.querySelector(".next");
-      if (nextButton.hasAttribute("disabled") === false) {
-        nextButton.setAttribute("disabled", "");
-      }
     }
   }
 };
 
-export const stepBack = (currentIndex) => {};
+export const stepBack = () => {
+  const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
+  // adjust current index
+  const indexToHide = currentIndex + 1;
+  // remove current question
+  const currentQuestion = document.querySelector("#question" + indexToHide);
+  console.log(indexToHide, currentQuestion);
+  currentQuestion.remove();
+  // remove current position
+  removeCursor(currentIndex);
+  // remove hidden class to previous question
+  document.querySelector("#question" + currentIndex).classList.remove("hidden");
+
+};

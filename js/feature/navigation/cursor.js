@@ -3,9 +3,6 @@ export const appendCursor = (questionDatas) => {
         <div class="cursorContainer">
         ${questionDatas
           .map((question, index) => {
-            if (index === 0) {
-              return `<span id="cursor${index}" class="cursor"></span>`;
-            }
             return `
             <span id="cursor${index}" class="cursor"></span>
             `;
@@ -17,12 +14,12 @@ export const appendCursor = (questionDatas) => {
   moveCursor(0);
 };
 
-export const moveCursor = (currentIndex) => {
-  const pos = "#cursor" + currentIndex;
-  const currentCursor = document.querySelector(pos).classList.add('active')
+export const moveCursor = (index) => {
+  const pos = "#cursor" + index;
+  const currentCursor = document.querySelector(pos).classList.add("active")
 };
 
-export const removeCursor = (previousIndex) => {
-  const pos = "#cursor" + previousIndex;
-  const currentCursor = document.querySelector(pos).classList.remove('active')
+export const removeCursor = (index) => {
+  const pos = "#cursor" + index;
+  const currentCursor = document.querySelector(pos).classList.remove("active")
 };

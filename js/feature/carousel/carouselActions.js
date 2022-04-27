@@ -16,14 +16,14 @@ export const setCarousel = () => {
 };
 
 export const moveLeft = () => {
-    const topLeft = document.querySelector('#topLeft');
-    topLeft.addEventListener('click', (e)=>{
+    const topLeft = document.querySelector("#topLeft");
+    topLeft.addEventListener("click", (e)=>{
 
-      const carouselContainer = document.querySelector('.carouselContainer');
+      const carouselContainer = document.querySelector(".carouselContainer");
 
-      const top = document.querySelector('#top');
-      const topRight = document.querySelector('#topRight');
-      const botRight = document.querySelector('#botRight');
+      const top = document.querySelector("#top");
+      const topRight = document.querySelector("#topRight");
+      const botRight = document.querySelector("#botRight");
     })
   }
 
