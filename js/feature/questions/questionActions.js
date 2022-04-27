@@ -21,25 +21,29 @@ export const handleQuestionClick = () => {
         if (e.target.id !== "") {
           setUserChoice(e.target.id);
         }
-        // get index
-        const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
         // lauch nextStep
-        nextStep(currentIndex);
+        nextStep();
       },
       { once: true }
     );
   });
 };
 
-export const nextStep = (currentIndex) => {
+export const nextStep = () => {
+  // get index
+  const currentIndex = JSON.parse(sessionStorage.getItem("userChoices")).length;
+  console.log(currentIndex);
+
   // hide current question
   const toHide = "#question" + currentIndex;
   document.querySelector(toHide).classList.add("hidden");
+
   // datas
   const resultDatas = JSON.parse(sessionStorage.getItem("resultsItem"));
   const questionDatas = JSON.parse(sessionStorage.getItem("questionsItem"));
   const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
   const currentQuestion = questionDatas[currentIndex];
+
   if (currentQuestion.final) {
     // set a carousel
     setCarousel();
@@ -47,8 +51,8 @@ export const nextStep = (currentIndex) => {
     // set a new question
     appendQuestion(currentIndex);
     handleQuestionClick();
-    // add cursor for the first question
     if (currentIndex === 0) {
+      // add cursor for the first question
       appendCursor(questionDatas);
       appendNavBtn();
       handlePrevious();
@@ -61,8 +65,6 @@ export const nextStep = (currentIndex) => {
         nextButton.setAttribute("disabled", "");
       }
     }
-    // store index
-    sessionStorage.setItem("currentIndex", currentIndex + 1);
   }
 };
 
