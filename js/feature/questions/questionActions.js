@@ -34,7 +34,10 @@ export const nextStep = () => {
   const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
   // hide current question
   const toHide = "#question" + currentIndex;
-  document.querySelector(toHide).classList.add("hidden");
+  const questionToHide = document.querySelector(toHide);
+  console.log("tohide", questionToHide)
+  if(questionToHide.classList.contains("hidden")) return;
+  questionToHide.classList.add("hidden");
   // datas
   const questionDatas = JSON.parse(sessionStorage.getItem("questionsItem"));
   const currentQuestion = questionDatas[currentIndex];
@@ -65,11 +68,13 @@ export const stepBack = () => {
   const currentQuestion = document.querySelector("#question" + currentIndex);
   console.log("to remove", currentIndex, currentQuestion);
   currentQuestion.remove();
-  const previousIndex = currentIndex -1;
+  const previousIndex = currentIndex - 1;
   // remove current position
   removeCursor(previousIndex);
   // remove hidden class to previous question
-  document.querySelector("#question" + previousIndex).classList.remove("hidden");
+  document
+    .querySelector("#question" + previousIndex)
+    .classList.remove("hidden");
   // set index
   sessionStorage.setItem("currentIndex", previousIndex);
 };
