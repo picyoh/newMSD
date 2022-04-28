@@ -17,7 +17,6 @@ export const appendFirstQuestion = () => {
 export const appendQuestion = (currentIndex) => {
   const currentQuestion = JSON.parse(sessionStorage.getItem("questionsItem"))[currentIndex];
   const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
-  // TODO: replace space by _ on btn Id
   const button = `
             <div id="question${currentIndex + 1}" class="question">
             ${
@@ -44,7 +43,7 @@ export const appendQuestion = (currentIndex) => {
                     userChoices.indexOf(choice.parent) > -1 ||
                     choice.parent === undefined
                   ) {
-                    return `<button id=${choice.title} class="answer">${choice.title}</button>`;
+                    return `<button id=${choice.title.replace(' ', '_')} class="answer">${choice.title}</button>`;
                   }
                 })
                 .join("")}
