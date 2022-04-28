@@ -11,48 +11,49 @@ export const appendNavBtn = () => {
   content.insertAdjacentHTML("beforeend", navBtn);
 };
 
+export const triggerNavBtn = () => {
+  handlePrevious();
+  handleNext();
+};
+
 export const handlePrevious = () => {
   // get previous button
   const previousBtn = document.querySelector(".previous");
+
   previousBtn.addEventListener("click", (e) => {
     // get current index
     const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
     if (currentIndex > 0) {
+      if (previousBtn.hasAttribute("disabled")) {
+        previousBtn.removeAttribute("disabled");
+      }
+      // step back
       stepBack();
-      sessionStorage.setItem("currentIndex", currentIndex - 1);
     } else {
+      // disable previous button
       previousBtn.setAttribute("disabled", "");
     }
-    // trigger next btn
-    if (document.querySelector(".next").hasAttribute("disabled") === true)
-      handleNext();
   });
 };
 
 export const handleNext = () => {
+  // enable next button
   const nextButton = document.querySelector(".next");
-  // adjust current Index
-  const currentIndex = parseInt(sessionStorage.getItem("currentIndex")) + 1;
-  // get user choices length
-  const userChoicesLength = JSON.parse(
-    sessionStorage.getItem("userChoices")
-  ).length;
-  if (currentIndex < userChoicesLength) {
-    // enable next button
-    nextButton.removeAttribute("disabled");
-  }
-
-  // console.log(currentIndex, userChoicesLength);
+  nextButton.removeAttribute("disabled");
 
   nextButton.addEventListener("click", (e) => {
-    if (currentIndex < userChoicesLength) {
-      // go next
-      sessionStorage.setItem("currentIndex", currentIndex);
-      // lauch nextStep
-      nextStep();
-    } else {
+    // get current index
+    const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
+    // get user choices length
+    const userChoicesLength = JSON.parse(
+      sessionStorage.getItem("userChoices")
+    ).length;
+    console.log("current/userChoices", currentIndex, userChoicesLength);
+    // lauch nextStep
+    nextStep();
+    if (currentIndex + 1 > userChoicesLength) {
       // disable next button
-      nextButton.setAttribute("disabled", "");
+      document.querySelector(".next").setAttribute("disabled", "");
     }
   });
 };

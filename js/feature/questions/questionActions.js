@@ -1,7 +1,7 @@
 import { appendQuestion } from "./questionUi.js";
 import { setCarousel } from "../carousel/carouselActions.js";
 
-import { appendNavBtn, handlePrevious } from "../navigation/navBtn.js";
+import { appendNavBtn, triggerNavBtn } from "../navigation/navBtn.js";
 import {
   appendCursor,
   moveCursor,
@@ -32,7 +32,6 @@ export const handleQuestionClick = () => {
 export const nextStep = () => {
   // get index
   const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
-  console.log(currentIndex);
   // hide current question
   const toHide = "#question" + currentIndex;
   document.querySelector(toHide).classList.add("hidden");
@@ -51,25 +50,26 @@ export const nextStep = () => {
       // add navigation
       appendCursor(questionDatas);
       appendNavBtn();
-      handlePrevious();
+      triggerNavBtn();
     } else {
       // move cursor
       moveCursor(currentIndex);
     }
+    sessionStorage.setItem("currentIndex", currentIndex + 1);
   }
 };
 
 export const stepBack = () => {
   const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
-  // adjust current index
-  const indexToHide = currentIndex + 1;
   // remove current question
-  const currentQuestion = document.querySelector("#question" + indexToHide);
-  console.log(indexToHide, currentQuestion);
+  const currentQuestion = document.querySelector("#question" + currentIndex);
+  console.log("to remove", currentIndex, currentQuestion);
   currentQuestion.remove();
+  const previousIndex = currentIndex -1;
   // remove current position
-  removeCursor(currentIndex);
+  removeCursor(previousIndex);
   // remove hidden class to previous question
-  document.querySelector("#question" + currentIndex).classList.remove("hidden");
-
+  document.querySelector("#question" + previousIndex).classList.remove("hidden");
+  // set index
+  sessionStorage.setItem("currentIndex", previousIndex);
 };
