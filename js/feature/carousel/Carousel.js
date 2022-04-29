@@ -17,11 +17,10 @@ export const orderCarousel = () => {
     result4.classList.add("backLeft");
     const result5 = document.querySelector("#result5");
     result5.classList.add("left");
-    // TODO: add up mouvement
-    // TODO: add down mouvement
   }
 };
 
+// TODO: create updateResult to change carouselContainer content
 // append Carousel
 export const appendResults = (resultDatas) => {
   console.log(resultDatas);
@@ -29,6 +28,7 @@ export const appendResults = (resultDatas) => {
           <div class="carousel">
             <h2>Resultats</h2>
             <div class="carouselContainer">
+              <button class="carouselBefore"><i class="fa-solid fa-angle-left"></i></button>
           ${resultDatas
             .map((result, index) => {
               return `
@@ -42,13 +42,23 @@ export const appendResults = (resultDatas) => {
                   `;
             })
             .join("")}
+              <button class="carouselAfter"><i class="fa-solid fa-angle-right"></i></button>
             </div>
           </div>
             `;
   content.insertAdjacentHTML("beforeend", carousel);
-  // orderCarousel();
+  orderCarousel();
 };
 
-export const carouselLeft = () => {};
+// TODO: add before
+// TODO: add after mouvement
 
-export const carouselRight = () => {};
+export const carouselBefore = () => {
+  document
+    .querySelector(".carouselBefore")
+    .addEventListener("click", (e) => {
+      
+    });
+};
+
+export const carouselAfter = () => {};
