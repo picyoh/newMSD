@@ -1,7 +1,7 @@
 import { appendQuestion } from "./questionUi.js";
 import { setCarousel } from "../carousel/carouselActions.js";
 
-import { appendNavBtn, triggerNavBtn } from "../navigation/navBtn.js";
+import { handlePrevious } from "../navigation/navBtn.js";
 import {
   appendCursor,
   moveCursor,
@@ -19,7 +19,7 @@ export const handleQuestionClick = () => {
         // set userChoice
         if (e.target.id !== "") setUserChoice(e.target);
         // set current index
-        const currentIndex = e.target.parentNode.parentNode.id.slice(-1);
+        const currentIndex = e.target.closest(".question").id.slice(-1);
         sessionStorage.setItem("currentIndex", currentIndex);
         // lauch nextStep
         nextStep();
@@ -35,31 +35,26 @@ export const nextStep = () => {
   // hide current question
   const toHide = "#question" + currentIndex;
   const questionToHide = document.querySelector(toHide);
-  console.log("tohide", questionToHide)
-  if(questionToHide.classList.contains("hidden")) return;
+  console.log("tohide", currentIndex, questionToHide);
+  if (questionToHide.classList.contains("hidden")) return;
   questionToHide.classList.add("hidden");
   // datas
   const questionDatas = JSON.parse(sessionStorage.getItem("questionsItem"));
   const currentQuestion = questionDatas[currentIndex];
   // set next
-  if (currentQuestion.final) {
-    // set a carousel
-    setCarousel();
+  // set a new question
+  appendQuestion(currentIndex);
+  handleQuestionClick();
+  if (currentIndex === 0) {
+    // add navigation
+    appendCursor(questionDatas);
   } else {
-    // set a new question
-    appendQuestion(currentIndex);
-    handleQuestionClick();
-    if (currentIndex === 0) {
-      // add navigation
-      appendCursor(questionDatas);
-      appendNavBtn();
-      triggerNavBtn();
-    } else {
-      // move cursor
-      moveCursor(currentIndex);
-    }
-    sessionStorage.setItem("currentIndex", currentIndex + 1);
+    // move cursor
+    moveCursor(currentIndex);
+    // trigger navBtn
+    handlePrevious();
   }
+  sessionStorage.setItem("currentIndex", currentIndex + 1);
 };
 
 export const stepBack = () => {

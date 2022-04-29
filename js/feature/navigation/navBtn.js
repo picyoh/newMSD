@@ -1,29 +1,15 @@
 import { nextStep, stepBack } from "../questions/questionActions.js";
-import { removeCursor } from "./cursor.js";
-
-export const appendNavBtn = () => {
-  const navBtn = `
-      <div class="navBtn">
-        <button class="previous">Previous</button>
-        <button class="next" disabled>Next</button>
-      </div>
-      `;
-  content.insertAdjacentHTML("beforeend", navBtn);
-};
-
-export const triggerNavBtn = () => {
-  handlePrevious();
-  handleNext();
-};
 
 export const handlePrevious = () => {
   // get previous button
   const previousBtn = document.querySelector(".previous");
+  previousBtn.removeAttribute("disabled");
 
   previousBtn.addEventListener("click", (e) => {
     // get current index
     const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
-    if (currentIndex > 0) {
+    // 
+    if (currentIndex > 1) {
       if (previousBtn.hasAttribute("disabled")) {
         previousBtn.removeAttribute("disabled");
       }
@@ -33,6 +19,7 @@ export const handlePrevious = () => {
       // disable previous button
       previousBtn.setAttribute("disabled", "");
     }
+    handleNext()
   });
 };
 

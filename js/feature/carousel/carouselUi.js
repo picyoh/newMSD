@@ -1,33 +1,18 @@
 // order carousel components
 export const orderCarousel = () => {
   // check center
-  const carouselCenter = document.querySelector(".carouselCenter");
+  const activeResult = document.querySelector(".activeResult");
   // set base order
-  if (carouselCenter === null) {
-    // left
-    const result5 = document.querySelector("#result5");
-    result5.classList.add("carouselLeft");
-    // center
+  if (activeResult === null) {
+    // trigger first result
     const result0 = document.querySelector("#result0");
-    result0.classList.add("carouselCenter");
-    // right
-    const result1 = document.querySelector("#result1");
-    result1.classList.add("carouselRight");
-    // TODO: add left mouvement
-    // TODO: add right mouvement
+    result0.classList.add("activeResult");
+    // TODO: add up mouvement
+    // TODO: add down mouvement
   }
 };
 
-// size background according to %
-const sizeBackground = () => {
-  const results = document.querySelectorAll(".results");
-  results.forEach((result, index) => {
-    // get %
-    const resultScore = result.children[1].innerHTML;
-    result.children[2].style = "height: " + resultScore;
-  });
-};
-
+// TODO: 
 // append Carousel
 export const appendResults = (resultDatas) => {
   console.log(resultDatas);
@@ -38,15 +23,13 @@ export const appendResults = (resultDatas) => {
           ${resultDatas
             .map((result, index) => {
               return `
-              ${
-                index < 2 || index === 5
-                  ? `<div id=result${index} class="results">`
-                  : `<div id=result${index} class="results hidden">`
-              }
-                    <img src= ${result.data.src} />
-                    <p>${result.score}%</p>
-                    <div class="podium"></div>
-                  </div>
+              <div id=result${index} class="results">
+                <div class="imgContainer">
+                  <img src= ${result.data.src} />
+                </div>
+                <p>${result.score}%</p>
+                <div class="matchChart" style="height:${result.score}%"></div>
+              </div>
                   `;
             })
             .join("")}
@@ -54,8 +37,7 @@ export const appendResults = (resultDatas) => {
           </div>
             `;
   content.insertAdjacentHTML("beforeend", carousel);
-  sizeBackground();
-  orderCarousel();
+  // orderCarousel();
 };
 
 export const carouselLeft = () => {};

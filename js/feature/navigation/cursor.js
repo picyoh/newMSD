@@ -9,6 +9,10 @@ export const appendCursor = (questionDatas) => {
           })
           .join("")}
         </div>
+        <div class="navBtn">
+          <button class="previous" disabled>Previous</button>
+          <button class="next" disabled>Next</button>
+        </div>
         `;
   content.insertAdjacentHTML("afterbegin", cursor);
   moveCursor(0);

@@ -1,4 +1,4 @@
-function sortResults(datas, userChoices, questionsLength) {
+export const sortResults = (datas, userChoices, questionsLength) => {
   const maxLength = 6;
   let userResults = [];
   let highScore = 0;
@@ -32,5 +32,3 @@ function sortResults(datas, userChoices, questionsLength) {
   console.log(userResults);
   return userResults;
 }
-
-export { sortResults };

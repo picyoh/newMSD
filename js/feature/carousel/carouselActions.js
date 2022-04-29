@@ -15,7 +15,7 @@ export const setCarousel = () => {
   // carousel.moveLeft();
 };
 
-export const moveLeft = () => {
+export const moveTop = () => {
     const topLeft = document.querySelector("#topLeft");
     topLeft.addEventListener("click", (e)=>{
 
@@ -27,6 +27,6 @@ export const moveLeft = () => {
     })
   }
 
-export const moveRight = () => {
+export const moveDown = () => {
 
 }
