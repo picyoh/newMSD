@@ -175,10 +175,14 @@ footer {
   width: 80%;
   display: flex;
   flex-direction: column;
+}
+
+.carouselContent {
   perspective: 1000px;
 }
 
 .carouselContainer {
+  height: 30vh;
   display: flex;
   flex-direction: row;
   transform-style: preserve-3d;
@@ -221,43 +225,40 @@ footer {
 }
 
 .activeResult {
-  transform: translateX(150%) rotateY(0deg) translateZ(350px);
+  transform: translateX(150%) translateY(25%) rotateY(0deg) translateZ(250px);
 }
 
 .right {
-  transform: translateX(150%) rotateY(60deg) translateZ(250px) rotateY(-60deg);
-  opacity: 90%;
+  transform: translateX(150%) translateY(25%) rotateY(60deg) translateZ(250px) rotateY(-60deg);
 
 }
 
 .backRight {
-  transform: translateX(150%) rotateY(120deg) translateZ(250px) rotateY(-120deg);
-  opacity: 20%;
+  transform: translateX(150%) translateY(25%) rotateY(120deg) translateZ(250px) rotateY(-120deg);
 }
 
 .back {
-  transform: translateX(150%) rotateY(180deg) translateZ(250px) rotateY(-180deg);
-  opacity: 0%;
+  transform: translateX(150%) translateY(25%) rotateY(180deg) translateZ(250px) rotateY(-180deg);
 }
 
 .backLeft {
-  transform: translateX(150%) rotateY(240deg) translateZ(250px) rotateY(-240deg);
-  opacity: 20%;
+  transform: translateX(150%) translateY(25%) rotateY(240deg) translateZ(250px) rotateY(-240deg);
 }
 
 .left {
-  transform: translateX(150%) rotateY(300deg) translateZ(250px) rotateY(-300deg);
-  opacity: 90%;
+  transform: translateX(150%) translateY(25%) rotateY(300deg) translateZ(250px) rotateY(-300deg);
 }
 
 .carouselBefore {
   position: absolute;
-  left:0
+  left:0;
+  top: 50%;
 }
 
 .carouselAfter {
   position: absolute;
-  right:0
+  right:0;
+  top: 50%
 }
 
 .hidden {
