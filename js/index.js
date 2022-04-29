@@ -1,4 +1,4 @@
-import { appendFirstQuestion } from "./feature/questions/questionUi.js";
+import { appendFirstQuestion } from "./feature/questions/Question.js";
 import { handleQuestionClick } from "./feature/questions/questionActions.js";
 
 import { loadQuestions, loadResult } from "./services/load.js";

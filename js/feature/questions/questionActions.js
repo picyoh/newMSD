@@ -1,14 +1,13 @@
-import { appendQuestion } from "./questionUi.js";
-import { setCarousel } from "../carousel/carouselActions.js";
+import { setUserChoice } from "../../index.js";
 
-import { handlePrevious } from "../navigation/navBtn.js";
+import { appendQuestion } from "./Question.js";
+
+import { appendTape } from "../navTape/NavTape.js";
 import {
-  appendCursor,
   moveCursor,
   removeCursor,
-} from "../navigation/cursor.js";
-
-import { setUserChoice } from "../../index.js";
+  handlePrevious,
+} from "../navTape/navTapeActions.js";
 
 export const handleQuestionClick = () => {
   const answers = document.querySelectorAll(".answer");
@@ -47,7 +46,7 @@ export const nextStep = () => {
   handleQuestionClick();
   if (currentIndex === 0) {
     // add navigation
-    appendCursor(questionDatas);
+    appendTape(questionDatas);
   } else {
     // move cursor
     moveCursor(currentIndex);

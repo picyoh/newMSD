@@ -4,15 +4,24 @@ export const orderCarousel = () => {
   const activeResult = document.querySelector(".activeResult");
   // set base order
   if (activeResult === null) {
-    // trigger first result
+    // allocate results
     const result0 = document.querySelector("#result0");
     result0.classList.add("activeResult");
+    const result1 = document.querySelector("#result1");
+    result1.classList.add("right");
+    const result2 = document.querySelector("#result2");
+    result2.classList.add("backRight");
+    const result3 = document.querySelector("#result3");
+    result3.classList.add("back");
+    const result4 = document.querySelector("#result4");
+    result4.classList.add("backLeft");
+    const result5 = document.querySelector("#result5");
+    result5.classList.add("left");
     // TODO: add up mouvement
     // TODO: add down mouvement
   }
 };
 
-// TODO: 
 // append Carousel
 export const appendResults = (resultDatas) => {
   console.log(resultDatas);

@@ -1,5 +1,25 @@
 import { nextStep, stepBack } from "../questions/questionActions.js";
 
+export const hideNavTape = () => {
+  // hide navigation
+  document.querySelector(".cursorContainer").classList.add("hidden");
+  document.querySelector(".navBtn").classList.add("hidden");
+}
+
+// Cursor actions
+
+export const moveCursor = (index) => {
+  const pos = "#cursor" + index;
+  const currentCursor = document.querySelector(pos).classList.add("active")
+};
+
+export const removeCursor = (index) => {
+  const pos = "#cursor" + index;
+  const currentCursor = document.querySelector(pos).classList.remove("active")
+};
+
+// Button actions
+
 export const handlePrevious = () => {
   // get previous button
   const previousBtn = document.querySelector(".previous");

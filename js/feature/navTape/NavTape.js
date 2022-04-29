@@ -1,4 +1,6 @@
-export const appendCursor = (questionDatas) => {
+import { moveCursor } from "./navTapeActions.js";
+
+export const appendTape = (questionDatas) => {
   const cursor = `
         <div class="cursorContainer">
         ${questionDatas
@@ -16,14 +18,4 @@ export const appendCursor = (questionDatas) => {
         `;
   content.insertAdjacentHTML("afterbegin", cursor);
   moveCursor(0);
-};
-
-export const moveCursor = (index) => {
-  const pos = "#cursor" + index;
-  const currentCursor = document.querySelector(pos).classList.add("active")
-};
-
-export const removeCursor = (index) => {
-  const pos = "#cursor" + index;
-  const currentCursor = document.querySelector(pos).classList.remove("active")
 };

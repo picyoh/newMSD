@@ -1,4 +1,4 @@
-import { appendResults } from "./carouselUi.js";
+import { appendResults } from "./Carousel.js";
 import { sortResults } from "../../services/sortResults.js";
 
 export const setCarousel = () => {
@@ -7,9 +7,6 @@ export const setCarousel = () => {
   const questions = JSON.parse(sessionStorage.getItem("questionsItem"));
   // sort result data
   const results = sortResults(resultDatas, userChoices, questions.length);
-  // hide navigation
-  document.querySelector(".cursorContainer").classList.add("hidden");
-  document.querySelector(".navBtn").classList.add("hidden");
   // set carousel
   appendResults(results);
   // carousel.moveLeft();
