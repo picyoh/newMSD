@@ -2,7 +2,7 @@ import { appendFirstQuestion } from "./feature/questions/Question.js";
 import { handleQuestionClick } from "./feature/questions/questionActions.js";
 
 import { loadQuestions, loadResult } from "./services/load.js";
-import { setCarousel } from "./feature/carousel/carouselActions.js";
+import { setCarousel, updateCarousel } from "./feature/carousel/carouselActions.js";
 
 window.onload = () => {
   loadQuestions();
@@ -49,7 +49,10 @@ export const setUserChoice = (target) => {
   }
   console.log(userChoicesLength)
   // check length to append carousel
-  if(userChoicesLength > 0) {
+  if(userChoicesLength === 0) {
     setCarousel()
+  }
+  if(userChoicesLength > 1) {
+    updateCarousel()
   }
 };

@@ -171,26 +171,24 @@ footer {
 }
 
 .carousel {
-  position: relative;
   width: 80%;
   display: flex;
   flex-direction: column;
 }
 
 .carouselContent {
+  height: 30vh;
+  position: relative;
+  display: flex;
+  flex-direction: row;
   perspective: 1000px;
 }
 
 .carouselContainer {
-  height: 30vh;
-  display: flex;
-  flex-direction: row;
+  position: absolute;
+  width: 100%;
   transform-style: preserve-3d;
   transition: transform 1s;
-}
-
-.carouselContainer::-webkit-scrollbar {
-  display: none;
 }
 
 .results {
@@ -211,9 +209,7 @@ footer {
   padding: 1rem;
   background-color: var(--main-color);
 }
-.results p {
-  margin-bottom: 0;
-}
+
 
 .matchChart {
   position: absolute;
@@ -224,28 +220,28 @@ footer {
   background-color: var(--secondary-color);
 }
 
-.activeResult {
-  transform: translateX(150%) translateY(25%) rotateY(0deg) translateZ(250px);
+#result0 {
+  transform: translateX(150%) translateY(25%) rotateY(0deg) translateZ(350px);
 }
 
-.right {
+#result1 {
   transform: translateX(150%) translateY(25%) rotateY(60deg) translateZ(250px) rotateY(-60deg);
 
 }
 
-.backRight {
+#result2 {
   transform: translateX(150%) translateY(25%) rotateY(120deg) translateZ(250px) rotateY(-120deg);
 }
 
-.back {
+#result3 {
   transform: translateX(150%) translateY(25%) rotateY(180deg) translateZ(250px) rotateY(-180deg);
 }
 
-.backLeft {
+#result4 {
   transform: translateX(150%) translateY(25%) rotateY(240deg) translateZ(250px) rotateY(-240deg);
 }
 
-.left {
+#result5 {
   transform: translateX(150%) translateY(25%) rotateY(300deg) translateZ(250px) rotateY(-300deg);
 }
 

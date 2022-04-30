@@ -1,8 +1,5 @@
-import { orderCarousel } from "./carouselActions.js";
-
 // Carousel structure
 export const appendResults = (resultDatas) => {
-  console.log(resultDatas);
   const carousel = `
   <div class="carousel">
     <h2>Résultats</h2>
@@ -15,12 +12,11 @@ export const appendResults = (resultDatas) => {
       </div>
                 `;
   content.insertAdjacentHTML("beforeend", carousel);
-  updateResults(resultDatas);
-  orderCarousel();
+  carouselContent(resultDatas);
 };
 
 // TODO: update content after appendResults
-export const updateResults = (resultDatas) => {
+export const carouselContent = (resultDatas) => {
   const carouselContainer = document.querySelector(".carouselContainer");
   const carouselContent = resultDatas
     .map((result, index) => {

@@ -1,7 +1,8 @@
-import { appendResults } from "./Carousel.js";
+import { appendResults, carouselContent } from "./Carousel.js";
 import { sortResults } from "../../services/sortResults.js";
 
 export const setCarousel = () => {
+  // get datas
   const resultDatas = JSON.parse(sessionStorage.getItem("resultsItem"));
   const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
   const questions = JSON.parse(sessionStorage.getItem("questionsItem"));
@@ -10,24 +11,22 @@ export const setCarousel = () => {
   // set carousel
   appendResults(results);
 };
-// TODO: checker sans classe juste avec id result0...
-// order carousel components
-export const orderCarousel = () => {
-  // set base results order
-  const result0 = document.querySelector("#result0");
-  result0.classList.add("activeResult");
-  const result1 = document.querySelector("#result1");
-  result1.classList.add("right");
-  const result2 = document.querySelector("#result2");
-  result2.classList.add("backRight");
-  const result3 = document.querySelector("#result3");
-  result3.classList.add("back");
-  const result4 = document.querySelector("#result4");
-  result4.classList.add("backLeft");
-  const result5 = document.querySelector("#result5");
-  result5.classList.add("left");
-  carouselBefore();
-  carouselAfter();
+export const updateCarousel = () => {
+  // remove content
+  const carouselContentChildren = Array.from(
+    document.querySelector(".carouselContainer").children
+  );
+  carouselContentChildren.forEach((child, index) => {
+    child.remove();
+  });
+  // get datas
+  const resultDatas = JSON.parse(sessionStorage.getItem("resultsItem"));
+  const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
+  const questions = JSON.parse(sessionStorage.getItem("questionsItem"));
+  // sort result data
+  const results = sortResults(resultDatas, userChoices, questions.length);
+  // set carousel
+  carouselContent(results);
 };
 
 // TODO: check bug rotatebefore

@@ -34,7 +34,7 @@ export const nextStep = () => {
   // hide current question
   const toHide = "#question" + currentIndex;
   const questionToHide = document.querySelector(toHide);
-  console.log("tohide", currentIndex, questionToHide);
+  // console.log("tohide", currentIndex, questionToHide);
   if (questionToHide.classList.contains("hidden")) return;
   questionToHide.classList.add("hidden");
   // datas
