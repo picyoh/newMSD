@@ -12,8 +12,8 @@ export const setCarousel = () => {
   const results = sortResults(resultDatas, userChoices, questions.length);
   // set carousel
   appendResults(results);
-  carouselBefore();
-  carouselAfter();
+  carouselPrev();
+  carouselNext();
   currentDegree = 0;
 };
 
@@ -35,16 +35,16 @@ export const updateCarousel = () => {
   carouselContent(results);
 };
  
-const carouselBefore = () => {
-  document.querySelector(".carouselBefore").addEventListener("click", (e) => {
+const carouselPrev = () => {
+  document.querySelector(".carouselPrev").addEventListener("click", (e) => {
     e.stopPropagation();
     console.log("left");
     rotate("left");
   });
 };
 
-const carouselAfter = () => {
-  document.querySelector(".carouselAfter").addEventListener("click", (e) => {
+const carouselNext = () => {
+  document.querySelector(".carouselNext").addEventListener("click", (e) => {
     e.stopPropagation();
     console.log("right");
     rotate("right");

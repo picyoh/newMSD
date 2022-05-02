@@ -4,11 +4,11 @@ export const appendResults = (resultDatas) => {
   <div class="carousel">
     <h2>Résultats</h2>
     <div class="carouselContent">
-      <button class="carouselBefore"><i class="fa-solid fa-angle-left"></i></button>
+      <button class="carouselPrev"><i class="fa-solid fa-angle-left"></i></button>
       <div class="carouselContainer">
       
       </div>
-      <button class="carouselAfter"><i class="fa-solid fa-angle-right"></i></button>
+      <button class="carouselNext"><i class="fa-solid fa-angle-right"></i></button>
       </div>
                 `;
   content.insertAdjacentHTML("beforeend", carousel);

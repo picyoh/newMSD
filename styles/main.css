@@ -77,6 +77,12 @@ h2 {
   font-weight: 500;
 }
 
+.navTape {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .cursorContainer {
   width: 80%;
   height: 2vh;
@@ -245,13 +251,13 @@ footer {
   transform: translateX(150%) translateY(25%) rotateY(300deg) translateZ(250px) rotateY(-300deg);
 }
 
-.carouselBefore {
+.carouselPrev {
   position: absolute;
   left:0;
   top: 50%;
 }
 
-.carouselAfter {
+.carouselNext {
   position: absolute;
   right:0;
   top: 50%

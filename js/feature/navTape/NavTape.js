@@ -1,8 +1,10 @@
-import { moveCursor } from "./navTapeActions.js";
+import { handleNext, handlePrevious, moveCursor } from "./navTapeActions.js";
 
 export const appendTape = (questionDatas) => {
   const cursor = `
-        <div class="cursorContainer">
+        <div class="navTape">
+          <button class="previous" disabled><i class="fa-solid fa-angle-left"></i></button>
+          <div class="cursorContainer">
         ${questionDatas
           .map((question, index) => {
             return `
@@ -10,10 +12,8 @@ export const appendTape = (questionDatas) => {
             `;
           })
           .join("")}
-        </div>
-        <div class="navBtn">
-          <button class="previous" disabled>Previous</button>
-          <button class="next" disabled>Next</button>
+            </div>
+          <button class="next" disabled><i class="fa-solid fa-angle-right"></i></button>
         </div>
         `;
   content.insertAdjacentHTML("afterbegin", cursor);

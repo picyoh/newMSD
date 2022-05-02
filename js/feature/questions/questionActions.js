@@ -18,12 +18,15 @@ export const handleQuestionClick = () => {
         // set userChoice
         if (e.target.id !== "") setUserChoice(e.target);
         // set current index
-        const currentIndex = e.target.closest(".question").id.slice(-1);
+        const currentIndex = parseInt(e.target.closest(".question").id.slice(-1));
         sessionStorage.setItem("currentIndex", currentIndex);
         // lauch nextStep
         nextStep();
-      },
-      { once: true }
+        console.log(currentIndex)
+        if (currentIndex === 1){
+          handlePrevious();
+        }
+      }
     );
   });
 };
@@ -52,7 +55,6 @@ export const nextStep = () => {
     // move cursor
     moveCursor(currentIndex);
     // trigger navBtn
-    handlePrevious();
   }
   sessionStorage.setItem("currentIndex", currentIndex + 1);
 };
