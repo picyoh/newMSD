@@ -190,7 +190,7 @@ footer {
   transform-style: preserve-3d;
   transition: transform 1s;
 }
-
+/* TODO: adjust transistions of items */
 .results {
   position: absolute;
   transform-style: preserve-3d;

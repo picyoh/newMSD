@@ -14,11 +14,10 @@ export const sortResults = (datas, userChoices, questionsLength) => {
         score += fraction;
       }
     });
-    // console.log(score);
+    // compare datas
     const data = datas[index];
     const lastIndex = userResults.length - 1;
     const smallest = userResults[lastIndex];
-    // stack 6 results in userResults
     // push and sort result score
     userResults.push({ data, score });
     userResults.sort((a, b) => {
@@ -29,6 +28,5 @@ export const sortResults = (datas, userChoices, questionsLength) => {
       userResults.pop();
     }
   });
-  console.log(userResults);
   return userResults;
-}
+};

@@ -47,11 +47,11 @@ export const setUserChoice = (target) => {
     userChoices.push(btnValue);
     sessionStorage.setItem("userChoices", JSON.stringify(userChoices));
   }
-  console.log(userChoicesLength)
   // check length to append carousel
   if(userChoicesLength === 0) {
     setCarousel()
   }
+  // update carousel
   if(userChoicesLength > 1) {
     updateCarousel()
   }

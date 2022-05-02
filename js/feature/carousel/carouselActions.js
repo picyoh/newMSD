@@ -1,6 +1,8 @@
 import { appendResults, carouselContent } from "./Carousel.js";
 import { sortResults } from "../../services/sortResults.js";
 
+let currentDegree;
+
 export const setCarousel = () => {
   // get datas
   const resultDatas = JSON.parse(sessionStorage.getItem("resultsItem"));
@@ -10,7 +12,11 @@ export const setCarousel = () => {
   const results = sortResults(resultDatas, userChoices, questions.length);
   // set carousel
   appendResults(results);
+  carouselBefore();
+  carouselAfter();
+  currentDegree = 0;
 };
+
 export const updateCarousel = () => {
   // remove content
   const carouselContentChildren = Array.from(
@@ -28,10 +34,10 @@ export const updateCarousel = () => {
   // set carousel
   carouselContent(results);
 };
-
-// TODO: check bug rotatebefore
+ 
 const carouselBefore = () => {
   document.querySelector(".carouselBefore").addEventListener("click", (e) => {
+    e.stopPropagation();
     console.log("left");
     rotate("left");
   });
@@ -39,32 +45,32 @@ const carouselBefore = () => {
 
 const carouselAfter = () => {
   document.querySelector(".carouselAfter").addEventListener("click", (e) => {
+    e.stopPropagation();
     console.log("right");
     rotate("right");
   });
 };
 
-// TODO: carousel mouvement
 const rotate = (direction) => {
-  let degree = 0;
 
   switch (direction) {
     //   case "up":
     //     return degree =
     case "right":
-      degree = -60;
+      currentDegree -= 60;
       break;
     //   case "down":
     case "left":
-      degree = 60;
+      currentDegree += 60;
       break;
     default:
-      degree;
+      currentDegree;
   }
-  console.log(degree);
+
+  console.log(currentDegree);
   // move carousel
   const carousel = document.querySelector(".carouselContainer");
-  carousel.style.transform = "rotateY(" + degree + "deg)";
+  carousel.style.transform = "rotateY(" + currentDegree + "deg)";
   // move items
   const items = document.querySelectorAll(".results");
   items.forEach((item, index) => {
@@ -75,8 +81,7 @@ const rotate = (direction) => {
       "deg) translateZ(250px) rotateY(-" +
       60 * index +
       "deg) rotateY(" +
-      -degree +
+      -currentDegree +
       "deg)";
   });
-  // TODO: change class? check on codepen
 };

@@ -42,6 +42,7 @@ export const nextStep = () => {
   const currentQuestion = questionDatas[currentIndex];
   // set next
   // set a new question
+  // TODO: remove cursor for the last question
   appendQuestion(currentIndex);
   handleQuestionClick();
   if (currentIndex === 0) {

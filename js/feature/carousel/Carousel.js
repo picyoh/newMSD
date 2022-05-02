@@ -15,7 +15,6 @@ export const appendResults = (resultDatas) => {
   carouselContent(resultDatas);
 };
 
-// TODO: update content after appendResults
 export const carouselContent = (resultDatas) => {
   const carouselContainer = document.querySelector(".carouselContainer");
   const carouselContent = resultDatas
@@ -26,10 +25,11 @@ export const carouselContent = (resultDatas) => {
             <img src= ${result.data.src} />
           </div>
           <p>${result.score}%</p>
-          <div class="matchChart" style="height:${result.score}%"></div>
         </div>
         `;
     })
     .join("");
   carouselContainer.insertAdjacentHTML("afterbegin", carouselContent);
 };
+// % matching div
+{/* <div class="matchChart" style="height:${result.score}%"></div> */}

@@ -19,6 +19,7 @@ export const removeCursor = (index) => {
 };
 
 // Button actions
+// TODO: debug previous next btns
 
 export const handlePrevious = () => {
   // get previous button
@@ -39,7 +40,6 @@ export const handlePrevious = () => {
       // disable previous button
       previousBtn.setAttribute("disabled", "");
     }
-    handleNext()
   });
 };
 
