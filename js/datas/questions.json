@@ -2352,20 +2352,20 @@
                 [
                     {
                         "title": "Palm Grip",
-		    			"src": "../img/palmgrip.png",
+		    			"src": "../images/palmgrip.png",
                         "value": "1"
 
                     },
 
                     {
                         "title": "Claw Grip",
-		    			"src": "../img/clawgrip.png",
+		    			"src": "../images/clawgrip.png",
                         "value": "1"
 
                     },
                     {
                         "title": "Fingertip Grip",
-		    			"src": "../img/fingertipgrip.png",
+		    			"src": "../images/fingertipgrip.png",
                         "value": "1"
                     
                     }

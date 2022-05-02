@@ -60,9 +60,9 @@ export const handleNext = () => {
   console.log("current/userChoices", currentIndex, userChoicesLength);
   nextButton.addEventListener("click", (e) => {
     e.stopPropagation();
-    if (currentIndex < userChoicesLength) {
+    if (currentIndex <= userChoicesLength) {
       //  TODO: remove hidden
-      // nextStep();
+      nextStep();
     } else {
       // disable next button
       document.querySelector(".next").setAttribute("disabled", "");
