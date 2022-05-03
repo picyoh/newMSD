@@ -15,15 +15,17 @@ export const appendFirstQuestion = () => {
 };
 
 export const appendQuestion = (currentIndex) => {
-  const currentQuestion = JSON.parse(sessionStorage.getItem("questionsItem"))[currentIndex];
-  const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
+  const currentQuestion = JSON.parse(sessionStorage.getItem("questionsItem"))[
+    currentIndex
+  ];
+  const userData = JSON.parse(sessionStorage.getItem("userData"));
   const button = `
             <div id="question${currentIndex + 1}" class="question">
             ${
               currentQuestion.question === undefined
                 ? currentQuestion.qMulti
                     .map((element) => {
-                      if (userChoices.indexOf(element.parent) > -1) {
+                      if (userData.indexOf(element.parent) > -1) {
                         return `<h2>${element.question}</h2>`;
                       }
                     })
@@ -40,10 +42,13 @@ export const appendQuestion = (currentIndex) => {
                   </div>`;
                   }
                   if (
-                    userChoices.indexOf(choice.parent) > -1 ||
+                    userData.indexOf(choice.parent) > -1 ||
                     choice.parent === undefined
                   ) {
-                    return `<button id=${choice.title.replace(' ', '_')} class="answer">${choice.title}</button>`;
+                    return `<button id=${choice.title.replace(
+                      " ",
+                      "_"
+                    )} class="answer">${choice.title}</button>`;
                   }
                 })
                 .join("")}

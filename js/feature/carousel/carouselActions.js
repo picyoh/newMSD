@@ -6,10 +6,10 @@ let currentDegree;
 export const setCarousel = () => {
   // get datas
   const resultDatas = JSON.parse(sessionStorage.getItem("resultsItem"));
-  const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
+  const userData = JSON.parse(sessionStorage.getItem("userData"));
   const questions = JSON.parse(sessionStorage.getItem("questionsItem"));
   // sort result data
-  const results = sortResults(resultDatas, userChoices, questions.length);
+  const results = sortResults(resultDatas, userData, questions.length);
   // set carousel
   appendResults(results);
   carouselPrev();
@@ -27,10 +27,10 @@ export const updateCarousel = () => {
   });
   // get datas
   const resultDatas = JSON.parse(sessionStorage.getItem("resultsItem"));
-  const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
+  const userData = JSON.parse(sessionStorage.getItem("userData"));
   const questions = JSON.parse(sessionStorage.getItem("questionsItem"));
   // sort result data
-  const results = sortResults(resultDatas, userChoices, questions.length);
+  const results = sortResults(resultDatas, userData, questions.length);
   // set carousel
   carouselContent(results);
 };

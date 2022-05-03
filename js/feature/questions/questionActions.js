@@ -2,12 +2,11 @@ import { setUserChoice } from "../../index.js";
 
 import { appendQuestion } from "./Question.js";
 
-import { appendTape } from "../navTape/NavTape.js";
+import { appendNavTape } from "../navTape/NavTape.js";
 import {
   moveCursor,
   removeCursor,
-  handlePrevious,
-  hideNavTape,
+  triggerNavButton,
 } from "../navTape/navTapeActions.js";
 
 export const handleQuestionClick = () => {
@@ -31,50 +30,26 @@ export const nextStep = () => {
   // get current question
   const toHide = "#question" + currentIndex;
   const questionToHide = document.querySelector(toHide);
-  // already hide
-  if (questionToHide.classList.contains("hidden")) return;
-  // or hide
+  // hide current question
   questionToHide.classList.add("hidden");
-  console.log("tohide", currentIndex, questionToHide);
   // get questions datas
   const questionDatas = JSON.parse(sessionStorage.getItem("questionsItem"));
-  const currentQuestion = questionDatas[currentIndex];
-  // set a new question
-  appendQuestion(currentIndex);
-  // handle new answer click
-  handleQuestionClick();
-  if (currentIndex === 0) {
-    // add navigation
-    appendTape(questionDatas);
+  // hide navTape at the end
+  if (currentIndex + 1 === questionDatas.length) {
+    document.querySelector(".navTape").classList.add("hidden");
   } else {
-    if (currentIndex === 1) {
-      // trigger navBtn
-      handlePrevious();
+    // set a new question
+    appendQuestion(currentIndex);
+    // handle NavTape
+    if (currentIndex === 0) {
+      appendNavTape(questionDatas);
     }
-    // move cursor
     moveCursor(currentIndex);
-    if (currentIndex === questionDatas.length) {
-      //TODO: hide navTape
-      hideNavTape();
-    }
+    // handle new answer click
+    handleQuestionClick();
+    // set index
+    sessionStorage.setItem("currentIndex", currentIndex + 1);
+    // handle navTape click
+    triggerNavButton();
   }
-  sessionStorage.setItem("currentIndex", currentIndex + 1);
-};
-
-export const stepBack = () => {
-  const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
-  // remove current question
-  const currentQuestion = document.querySelector("#question" + currentIndex);
-  currentQuestion.remove();
-  console.log("to remove", currentIndex, currentQuestion);
-  // get previous Index
-  const previousIndex = currentIndex - 1;
-  // remove current position
-  removeCursor(previousIndex);
-  // remove hidden class to previous question
-  document
-    .querySelector("#question" + previousIndex)
-    .classList.remove("hidden");
-  // set index
-  sessionStorage.setItem("currentIndex", previousIndex);
 };

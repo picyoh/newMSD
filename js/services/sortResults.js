@@ -1,4 +1,4 @@
-export const sortResults = (datas, userChoices, questionsLength) => {
+export const sortResults = (datas, userData, questionsLength) => {
   const maxLength = 6;
   let userResults = [];
   let highScore = 0;
@@ -10,7 +10,7 @@ export const sortResults = (datas, userChoices, questionsLength) => {
     // add score for each tags matching
     const fraction = questionsLength;
     tags.forEach((tag) => {
-      if (userChoices.indexOf(tag) > -1) {
+      if (userData.indexOf(tag) > -1) {
         score += fraction;
       }
     });

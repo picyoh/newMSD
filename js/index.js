@@ -7,7 +7,7 @@ import { setCarousel, updateCarousel } from "./feature/carousel/carouselActions.
 window.onload = () => {
   loadQuestions();
   loadResult();
-  sessionStorage.setItem("userChoices", "[]");
+  sessionStorage.setItem("userData", "[]");
   appendFirstQuestion();
   handleQuestionClick();
 };
@@ -18,41 +18,41 @@ const questions = document.querySelector("#questions");
 export const setUserChoice = (target) => {
   // get value
   const btnValue = target.id.replace("_", " ");
-  // get userChoices & index
-  const userChoices = JSON.parse(sessionStorage.getItem("userChoices"));
-  const userChoicesLength = userChoices.length;
+  // get userData & index
+  const userData = JSON.parse(sessionStorage.getItem("userData"));
+  const userDataLength = userData.length;
   // get current index
   const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
   
-  // console.log("user/current", userChoicesLength, currentIndex);
+  // console.log("user/current", userDataLength, currentIndex);
   
   // check whether we need change previous choice
-  if (userChoicesLength > currentIndex) {
-    const diff = userChoicesLength + 1 - currentIndex;
+  if (userDataLength > currentIndex) {
+    const diff = userDataLength + 1 - currentIndex;
 
     // console.log("diff", diff);
     
     // pop choices
     let i;
     for (i = 0; i < diff; i++) {
-      userChoices.pop();
+      userData.pop();
     }
     // set new choices
-    sessionStorage.setItem("userChoices", JSON.stringify(userChoices));
+    sessionStorage.setItem("userData", JSON.stringify(userData));
     // disable next button
     document.querySelector(".next").setAttribute("disabled", "");
   }
   // check whether element exist in array
-  if (userChoices.indexOf(btnValue) === -1) {
-    userChoices.push(btnValue);
-    sessionStorage.setItem("userChoices", JSON.stringify(userChoices));
+  if (userData.indexOf(btnValue) === -1) {
+    userData.push(btnValue);
+    sessionStorage.setItem("userData", JSON.stringify(userData));
   }
   // check length to append carousel
-  if(userChoicesLength === 0) {
+  if(userDataLength === 0) {
     setCarousel()
   }
   // update carousel
-  if(userChoicesLength > 1) {
+  if(userDataLength > 1) {
     updateCarousel()
   }
 };

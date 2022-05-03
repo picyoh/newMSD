@@ -1,6 +1,6 @@
-import { handleNext, handlePrevious, moveCursor } from "./navTapeActions.js";
+import { moveCursor } from "./navTapeActions.js";
 
-export const appendTape = (questionDatas) => {
+export const appendNavTape = (questionDatas) => {
   const cursor = `
         <div class="navTape">
           <button class="previous" disabled><i class="fa-solid fa-angle-left"></i></button>
