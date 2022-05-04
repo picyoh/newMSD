@@ -15,6 +15,8 @@ window.onload = () => {
 const content = document.querySelector("#content");
 const questions = document.querySelector("#questions");
 
+// TODO: move setUserChoice
+
 export const setUserChoice = (target) => {
   // get value
   const btnValue = target.id.replace("_", " ");

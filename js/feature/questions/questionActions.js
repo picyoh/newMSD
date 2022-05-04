@@ -38,18 +38,46 @@ export const nextStep = () => {
   if (currentIndex + 1 === questionDatas.length) {
     document.querySelector(".navTape").classList.add("hidden");
   } else {
-    // set a new question
-    appendQuestion(currentIndex);
+    // check if it exists
+    const nextIndex = currentIndex + 1;
+    const questionAdded = "#question" + nextIndex;
+    const getAdded = document.querySelector(questionAdded);
+    console.log(currentIndex + 1, questionAdded, getAdded);
+    if (getAdded === null) {
+      // set a new question
+      appendQuestion(currentIndex);
+    }
     // handle NavTape
     if (currentIndex === 0) {
       appendNavTape(questionDatas);
     }
+    // move cursor
     moveCursor(currentIndex);
-    // handle new answer click
-    handleQuestionClick();
     // set index
     sessionStorage.setItem("currentIndex", currentIndex + 1);
+    console.log("next", currentIndex);
+    // handle new answer click
+    handleQuestionClick();
     // handle navTape click
     triggerNavButton();
   }
+};
+
+export const stepBack = () => {
+  // get current index & question
+  const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
+  const currentQuestion = document.querySelector(`#question${currentIndex}`);
+  // check if it exists
+  if (currentQuestion === null) return;
+  // remove current question
+  currentQuestion.remove();
+  // get previousIndex
+  const previousIndex = currentIndex - 1;
+  // remove hidden class to previous question
+  const previousQuestion = document.querySelector(`#question${previousIndex}`);
+  previousQuestion.classList.remove("hidden");
+  // remove cursor
+  removeCursor(previousIndex);
+  // adjust currentIndex
+  sessionStorage.setItem("currentIndex", previousIndex);
 };
