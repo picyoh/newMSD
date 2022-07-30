@@ -1,7 +1,8 @@
 :root {
   --background-color: #212121;
-  --main-color: white;
-  --secondary-color: purple;
+  --main-color: #187D65;
+  --secondary-color: #2EE7BA;
+  --text-color: #fff;
 }
 
 body {
@@ -18,33 +19,137 @@ body {
 }
 
 header {
-  flex: 20%;
-  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.up-header {
+  width: 100%;
+  height: 12vh;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color);
+  border-bottom-left-radius: 3vh;
+  border-bottom-right-radius: 3vh;
 }
 
-.logo {
-  flex: 30%;
-  align-self: center;
+#menu-burger {
+  flex: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.logo img {
-  order: 1;
-  max-height: 8vh;
+#burger-icon::before {
+  content: '';
+  position: absolute;
+  width: 3vw;
+  height: .7vh;
+  top: -1.5vh;
+  background-color: var(--main-color);
+}
+
+#burger-icon {
+  position: absolute;
+  width: 3vw;
+  height: .7vh;
+  background-color: var(--main-color);
+}
+
+#burger-icon::after {
+  content: '';
+  position: absolute;
+  width: 3vw;
+  height: .7vh;
+  top: 1.5vh;
+  background-color: var(--main-color);
 }
 
 h1 {
-  flex: 70%;
-  order: 2;
-  align-self: flex-start;
+  flex: 80%;
+  margin: 0;
   font-weight: 600;
   text-transform: uppercase;
+  text-align: center;
+  color: var(--main-color);
+}
+
+#color-scheme {
+  flex: 10%;
+}
+
+#color-scheme img {
+  width: 13%;
+  filter: invert(36%) sepia(75%) saturate(415%) hue-rotate(115deg) brightness(94%) contrast(93%);
+}
+
+.down-header {
+  display: flex;
+}
+
+.left-curve {
+  position: relative;
+  width: 4vw;
+  height: 6vh;
+  background-color: var(--secondary-color);
+}
+
+.left-curve::after {
+  content: '';
+  width: 8vw;
+  height: 12vh;
+  right: 0;
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--background-color);
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  width: 10vw;
+  height: 14vh;
+  background-color: var(--secondary-color);
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.logo-container {
+  height: 12vh;
+  width: 8vw;
+  padding: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgray;
+  border-radius: 50%;
+}
+
+.logo img {
+  max-height: 8vh;
+}
+
+.right-curve {
+  width: 4vw;
+  height: 6vh;
+  background-color: var(--secondary-color);
+}
+
+.right-curve::after{
+  content:'';
+  position: absolute;
+  width: 8vw;
+  height: 12vh;
+  border-radius: 50%;
+  background-color: var(--background-color);
 }
 
 nav {
-  flex: 100%;
-  order: 3;
+  flex: 20%;
+  z-index: 1;
 }
 
 nav ul {
@@ -59,11 +164,11 @@ ul a {
 }
 
 ul a {
-  color: var(--main-color);
+  color: var(--text-color);
 }
 
 ul a:visited {
-  color: var(--secondary-color);
+  color: var(--main-color);
 }
 
 #content {
@@ -71,10 +176,12 @@ ul a:visited {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 3%;
 }
 
 h2 {
   font-weight: 500;
+  text-align: center;
 }
 
 .navTape {
@@ -101,7 +208,8 @@ h2 {
 
 .navBtn {
   width: 30%;
-  margin-top: 2rem;;
+  margin-top: 2rem;
+  ;
   display: flex;
   justify-content: space-around;
 }
@@ -196,6 +304,7 @@ footer {
   transform-style: preserve-3d;
   transition: transform 1s;
 }
+
 /* TODO: adjust transistions of items */
 .results {
   position: absolute;
@@ -253,13 +362,13 @@ footer {
 
 .carouselPrev {
   position: absolute;
-  left:0;
+  left: 0;
   top: 50%;
 }
 
 .carouselNext {
   position: absolute;
-  right:0;
+  right: 0;
   top: 50%
 }
 
