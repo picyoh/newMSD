@@ -36,7 +36,7 @@ export const updateCarousel = () => {
 };
  
 const carouselPrev = () => {
-  document.querySelector(".carouselPrev").addEventListener("click", (e) => {
+  document.querySelector("#carouselPrev").addEventListener("click", (e) => {
     e.stopPropagation();
     console.log("left");
     rotate("left");
@@ -44,7 +44,7 @@ const carouselPrev = () => {
 };
 
 const carouselNext = () => {
-  document.querySelector(".carouselNext").addEventListener("click", (e) => {
+  document.querySelector("#carouselNext").addEventListener("click", (e) => {
     e.stopPropagation();
     console.log("right");
     rotate("right");

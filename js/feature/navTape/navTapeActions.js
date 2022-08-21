@@ -13,7 +13,7 @@ export const removeCursor = (currentIndex) => {
 
 // Button actions
 const handlePrevious = () => {
-  document.querySelector(".next").removeAttribute("disabled");
+  document.querySelector("#navNext").removeAttribute("disabled");
   const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
   console.log("hdlPrev", currentIndex);
   // step back
@@ -33,8 +33,8 @@ export const triggerNavButton = () => {
   const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
   console.log("trig", currentIndex);
   // get buttons
-  const previousButton = document.querySelector(".previous");
-  const nextButton = document.querySelector(".next");
+  const previousButton = document.querySelector("#navPrev");
+  const nextButton = document.querySelector("#navNext");
   // get userData length
   const userDataLength = JSON.parse(sessionStorage.getItem("userData")).length;
   // disable btns
