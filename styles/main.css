@@ -88,44 +88,15 @@ h1 {
 }
 
 .down-header {
-  display: flex;
   width: 100%;
-}
-
-.left-curve::before{
-  content: '';
-  position: absolute;
-  z-index: -1;
-  width: 50%;
-  height: 100%;
-  top: 0;
-  right: -1.2rem;
-  background-color: var(--secondary-color);
-}
-
-.left-curve {
-  flex: 38%;
-  position: relative;
-  height: 15vh;
-  border-radius: 100%;
-}
-
-.left-curve::after {
-  content: '';
-  position: absolute;
-  width: 60%;
-  height: 101%;
-  top: 0;
-  right: -4rem;
-  border-top-right-radius: 100%;
-  background-color: var(--background-color);
+  height: 12vh;
 }
 
 .logo {
-  flex: 24%;
+  position: relative;
   display: flex;
   justify-content: center;
-  height: 12vh;
+  height: 100%;
 }
 
 .logo::after {
@@ -133,16 +104,18 @@ content: '';
 position: absolute;
 z-index:-1;
 width: 33%;
-height: 60%;
-top:-32.5%;
-border-radius: 50%;
-background-color: var(--secondary-color);
+height: 100%;
+background: url("/images/Vector10.svg") top left no-repeat;
+background-size: contain;
+top:-2px;
 }
 
 .logo-container {
-  height: 9vh;
-  width: 5vw;
-  padding: 2%;
+  position: absolute;
+  height: 3vh;
+  width: 1.5vw;
+  padding: 1.5%;
+  top: -15%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -152,34 +125,6 @@ background-color: var(--secondary-color);
 
 .logo img {
   max-height: 6vh;
-}
-
-.right-curve::before {
-  content: '';
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  top: 0;
-  left: -1.2rem;
-  background-color: var(--secondary-color);
-}
-
-.right-curve {
-  flex: 38%;
-  position: relative;
-  height: 15vh;
-  border-radius: 100%;
-}
-
-.right-curve::after{
-  content:'';
-  position: absolute;
-  width: 60%;
-  height: 101%;
-  top: 0;
-  left: -4rem;
-  border-top-left-radius: 100%;
-  background-color: var(--background-color);
 }
 
 nav {
