@@ -20,10 +20,10 @@ export const carouselContent = (resultDatas) => {
     .map((result, index) => {
       return `
         <div id=result${index} class="results">
+        <p>${result.score}%</p>
           <div class="imgContainer">
             <img src= ${result.data.src} />
           </div>
-          <p>${result.score}%</p>
         </div>
         `;
     })
@@ -31,4 +31,6 @@ export const carouselContent = (resultDatas) => {
   carouselContainer.insertAdjacentHTML("afterbegin", carouselContent);
 };
 // % matching div
-{/* <div class="matchChart" style="height:${result.score}%"></div> */}
+{
+  /* <div class="matchChart" style="height:${result.score}%"></div> */
+}

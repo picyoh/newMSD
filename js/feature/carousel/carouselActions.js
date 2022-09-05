@@ -76,7 +76,7 @@ const rotate = (direction) => {
   items.forEach((item, index) => {
     // add a rotation to
     item.style.transform =
-      "translateX(150%) translateY(25%) rotateY(" +
+      "translateX(-50%) translateY(15%) rotateY(" +
       60 * index +
       "deg) translateZ(250px) rotateY(-" +
       60 * index +

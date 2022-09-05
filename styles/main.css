@@ -162,7 +162,7 @@ h1 {
   position: absolute;
   z-index: -1;
   width: 100%;
-  height: 72%;
+  height: 67%;
   top: 7%;
   border: 3px solid var(--text-color);
 }
@@ -180,18 +180,28 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--background-color);
 }
 
 .cursorContainer {
   width: 80%;
   height: 2vh;
-  background-color: var(--main-color);
   display: flex;
 }
 
 .cursor {
   flex-grow: 1;
   border: 1px solid transparent;
+}
+
+#cursor0{
+border-top-left-radius: 1rem;
+border-bottom-left-radius: 1rem;
+}
+
+#cursor9{
+border-top-right-radius: 1rem;
+border-bottom-right-radius: 1rem;
 }
 
 .active {
@@ -253,7 +263,7 @@ h2 {
 /* BUTTONS */
 
 button {
-  padding: 1rem 1.5rem;
+  padding: .8rem 1rem;
   font-size: 1.2rem;
   text-transform: uppercase;
   color: var(--text-color);
@@ -294,6 +304,7 @@ footer {
   display: flex;
   justify-content: space-between;
   perspective: 1000px;
+  background-color: var(--background-color);
 }
 
 .carouselContainer {
@@ -317,10 +328,11 @@ footer {
 
 .results .imgContainer img {
   object-fit: contain;
-  height: 50%;
-  width: 50%;
+  height: 75%;
+  width: 30%;
   padding: 1rem;
-  background-color: var(--main-color);
+  border-radius: 15%;
+  background-color: white;
 }
 
 .matchChart {
@@ -339,30 +351,54 @@ footer {
 /* ANIMATION */
 
 #result0 {
-  transform: translateX(150%) translateY(25%) rotateY(0deg) translateZ(350px);
+  transform: 
+    translateX(-50%) 
+    translateY(15%) 
+    rotateY(0deg) 
+    translateZ(350px);
 }
 
 #result1 {
-  transform: translateX(150%) translateY(25%) rotateY(60deg) translateZ(250px)
-    rotateY(-60deg);
+  transform: 
+    translateX(-50%) 
+    translateY(15%) 
+    rotateY(60deg) 
+    translateZ(250px)
+    rotateY(-60deg)
 }
 
 #result2 {
-  transform: translateX(150%) translateY(25%) rotateY(120deg) translateZ(250px)
-    rotateY(-120deg);
+  transform: 
+    translateX(-50%) 
+    translateY(15%) 
+    rotateY(120deg) 
+    translateZ(250px)
+    rotateY(-60deg)
 }
 
 #result3 {
-  transform: translateX(150%) translateY(25%) rotateY(180deg) translateZ(250px)
-    rotateY(-180deg);
+  transform: 
+    translateX(-50%) 
+    translateY(15%) 
+    rotateY(180deg) 
+    translateZ(250px)
+    rotateY(-120deg)
 }
 
 #result4 {
-  transform: translateX(150%) translateY(25%) rotateY(240deg) translateZ(250px)
-    rotateY(-240deg);
+  transform: 
+    translateX(-50%) 
+    translateY(15%) 
+    rotateY(240deg) 
+    translateZ(250px)
+    rotateY(60deg)
 }
 
 #result5 {
-  transform: translateX(150%) translateY(25%) rotateY(300deg) translateZ(250px)
-    rotateY(-300deg);
+  transform: 
+    translateX(-50%) 
+    translateY(15%) 
+    rotateY(300deg) 
+    translateZ(250px)
+    rotateY(60deg)
 }
