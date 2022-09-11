@@ -1,6 +1,7 @@
 import { appendResults, carouselContent } from "./Carousel.js";
 import { sortResults } from "../../services/sortResults.js";
 
+let foreground = 0;
 let currentDegree;
 
 export const setCarousel = () => {
@@ -38,20 +39,22 @@ export const updateCarousel = () => {
 const carouselPrev = () => {
   document.querySelector("#carouselPrev").addEventListener("click", (e) => {
     e.stopPropagation();
-    console.log("left");
-    rotate("left");
+    foreground++;
+    console.log("left", foreground);
+    rotate("left", foreground);
   });
 };
 
 const carouselNext = () => {
   document.querySelector("#carouselNext").addEventListener("click", (e) => {
     e.stopPropagation();
-    console.log("right");
-    rotate("right");
+    foreground--;
+    console.log("right", foreground);
+    rotate("right", foreground);
   });
 };
 
-const rotate = (direction) => {
+const rotate = (direction, foreground) => {
 
   switch (direction) {
     //   case "up":
@@ -74,7 +77,6 @@ const rotate = (direction) => {
   // move items
   const items = document.querySelectorAll(".results");
   items.forEach((item, index) => {
-    // add a rotation to
     item.style.transform =
       "translateX(-50%) translateY(15%) rotateY(" +
       60 * index +
@@ -83,5 +85,12 @@ const rotate = (direction) => {
       "deg) rotateY(" +
       -currentDegree +
       "deg)";
+      //hide background
+      /*
+      if(){
+
+      }
+      */
   });
+
 };
