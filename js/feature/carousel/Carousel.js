@@ -20,7 +20,7 @@ export const carouselContent = (resultDatas) => {
     .map((result, index) => {
       return `
         <div id=result${index} class="results">
-        <p>${result.score}%</p>
+        <p class="hidden" >${result.score}%</p>
           <div class="imgContainer">
             <img src= ${result.data.src} />
           </div>

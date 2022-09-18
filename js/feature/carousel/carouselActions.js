@@ -39,7 +39,12 @@ export const updateCarousel = () => {
 const carouselPrev = () => {
   document.querySelector("#carouselPrev").addEventListener("click", (e) => {
     e.stopPropagation();
-    foreground++;
+    // Set foreground
+    if(foreground === 0){
+      foreground = 5;
+    }else {
+      foreground--;
+    }
     console.log("left", foreground);
     rotate("left", foreground);
   });
@@ -48,7 +53,12 @@ const carouselPrev = () => {
 const carouselNext = () => {
   document.querySelector("#carouselNext").addEventListener("click", (e) => {
     e.stopPropagation();
-    foreground--;
+        // Set foreground
+        if(foreground === 5){
+          foreground = 0;
+        }else {
+          foreground++;
+        }
     console.log("right", foreground);
     rotate("right", foreground);
   });
@@ -77,14 +87,25 @@ const rotate = (direction, foreground) => {
   // move items
   const items = document.querySelectorAll(".results");
   items.forEach((item, index) => {
-    item.style.transform =
-      "translateX(-50%) translateY(15%) rotateY(" +
+    if(index === foreground){
+      item.style.transform =
+      "translateX(-50%) translateY(35%) rotateY(" +
+      60 * index +
+      "deg) translateZ(350px) rotateY(-" +
+      60 * index +
+      "deg) rotateY(" +
+      -currentDegree +
+      "deg)";
+    } else {
+      item.style.transform =
+      "translateX(-50%) translateY(45%) rotateY(" +
       60 * index +
       "deg) translateZ(250px) rotateY(-" +
       60 * index +
       "deg) rotateY(" +
       -currentDegree +
       "deg)";
+    }
       //hide background
       /*
       if(){

@@ -1,6 +1,7 @@
 :root {
   --background-color: #212121;
   --light-background-color: #343238;
+  --dark-background-color: #030202;
   --main-color: #187d65;
   --secondary-color: #2ee7ba;
   --text-color: #cecece;
@@ -165,6 +166,7 @@ h1 {
   height: 150%;
   top: 6.5%;
   border: 3px solid var(--text-color);
+  border-radius: 1.5rem;
 }
 
 h2 {
@@ -187,6 +189,10 @@ h2 {
   width: 80%;
   height: 2vh;
   display: flex;
+  border-radius: 1rem;
+  box-shadow: inset 0px 0px 7px 2px var(--dark-background-color);
+  z-index: 1;
+  padding: .3rem
 }
 
 .cursor {
@@ -194,14 +200,20 @@ h2 {
   border: 1px solid transparent;
 }
 
-#cursor0{
-border-top-left-radius: 1rem;
-border-bottom-left-radius: 1rem;
+#cursor0 {
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  /*
+  box-shadow: 0px 0px 7px 2px white;
+  */
 }
 
-#cursor9{
-border-top-right-radius: 1rem;
-border-bottom-right-radius: 1rem;
+#cursor9 {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  /*
+  box-shadow: 0px 0px 7px 2px white;
+  */
 }
 
 .active {
@@ -230,6 +242,7 @@ border-bottom-right-radius: 1rem;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+  padding-top: 3rem;
 }
 
 .question h2 {
@@ -241,11 +254,10 @@ border-bottom-right-radius: 1rem;
 .firstQuestion {
   position: absolute;
   top: 50%;
-
 }
 
 .firstQuestion h2 {
-  flex: 0;
+  flex: 100%;
 }
 
 .answerGroup {
@@ -266,7 +278,7 @@ border-bottom-right-radius: 1rem;
 /* BUTTONS */
 
 button {
-  padding: .8rem 1rem;
+  padding: 0.8rem 1rem;
   font-size: 1.2rem;
   text-transform: uppercase;
   color: var(--text-color);
@@ -279,8 +291,9 @@ button {
 .next {
   border: none;
   background-color: var(--background-color);
+  padding: 2%;
+  z-index: 1;
 }
-
 
 /* FOOTER */
 
@@ -300,7 +313,7 @@ footer {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top:115%;
+  top: 115%;
 }
 
 .carouselContent {
@@ -333,7 +346,7 @@ footer {
 
 .results .imgContainer img {
   object-fit: contain;
-  /*
+  /* full size
   height: 75%;
   width: 30%;
   */
@@ -357,57 +370,33 @@ footer {
   display: none;
 }
 
-/* ANIMATION */
+/* Positions */
 
 #result0 {
-  transform: 
-    translateX(-50%) 
-    translateY(15%) 
-    rotateY(0deg) 
-    translateZ(350px);
+  transform: translateX(-50%) translateY(35%) rotateY(0deg) translateZ(350px);
 }
 
 #result1 {
-  transform: 
-    translateX(-50%) 
-    translateY(15%) 
-    rotateY(60deg) 
-    translateZ(250px)
-    rotateY(-60deg)
+  transform: translateX(-50%) translateY(45%) rotateY(60deg) translateZ(250px)
+    rotateY(-60deg);
 }
 
 #result2 {
-  transform: 
-    translateX(-50%) 
-    translateY(15%) 
-    rotateY(120deg) 
-    translateZ(250px)
-    rotateY(-60deg)
+  transform: translateX(-50%) translateY(45%) rotateY(120deg) translateZ(250px)
+    rotateY(-60deg);
 }
 
 #result3 {
-  transform: 
-    translateX(-50%) 
-    translateY(15%) 
-    rotateY(180deg) 
-    translateZ(250px)
-    rotateY(-120deg)
+  transform: translateX(-50%) translateY(45%) rotateY(180deg) translateZ(250px)
+    rotateY(-120deg);
 }
 
 #result4 {
-  transform: 
-    translateX(-50%) 
-    translateY(15%) 
-    rotateY(240deg) 
-    translateZ(250px)
-    rotateY(60deg)
+  transform: translateX(-50%) translateY(45%) rotateY(240deg) translateZ(250px)
+    rotateY(60deg);
 }
 
 #result5 {
-  transform: 
-    translateX(-50%) 
-    translateY(15%) 
-    rotateY(300deg) 
-    translateZ(250px)
-    rotateY(60deg)
+  transform: translateX(-50%) translateY(45%) rotateY(300deg) translateZ(250px)
+    rotateY(60deg);
 }
