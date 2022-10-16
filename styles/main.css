@@ -57,8 +57,7 @@ h1 {
 
 #color-scheme img {
   width: 13%;
-  filter: invert(36%) sepia(75%) saturate(415%) hue-rotate(115deg)
-    brightness(94%) contrast(93%);
+  filter: invert(36%) sepia(75%) saturate(415%) hue-rotate(115deg) brightness(94%) contrast(93%);
 }
 
 /* -> BURGER */
@@ -293,6 +292,7 @@ button {
   background-color: var(--background-color);
   padding: 2%;
   z-index: 1;
+  border-radius: 0;
 }
 
 /* FOOTER */
@@ -310,93 +310,79 @@ footer {
 
 .carousel {
   width: 80%;
-  display: flex;
-  flex-direction: column;
   position: absolute;
   top: 115%;
 }
 
 .carouselContent {
   height: 30vh;
-  position: relative;
   display: flex;
   justify-content: space-between;
-  perspective: 1000px;
   background-color: var(--background-color);
 }
 
 .carouselContainer {
-  transform-style: preserve-3d;
-  transition: transform 1s;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 /* -> CAROUSEL IMAGE */
 
 /* TODO: adjust transistions of items */
+.hidden {
+  display: none;
+}
+
+.foreground p {
+  display: block;
+  text-align: center;
+  margin: 0;
+  margin-left: 5%;
+}
+
 .results {
   position: absolute;
-  transform-style: preserve-3d;
-  text-align: center;
+  animation: ease-in-out;
+  transition: 1s;
 }
 
 .results .imgContainer {
-  width: 20vw;
-  height: 16vh;
+  padding: 5%;
 }
 
 .results .imgContainer img {
+  width: 8vw;
+  height: 16vh;
   object-fit: contain;
-  /* full size
-  height: 75%;
-  width: 30%;
-  */
-  height: 50%;
-  width: 25%;
-  padding: 1rem;
   border-radius: 15%;
   background-color: white;
-}
-
-.matchChart {
-  position: absolute;
-  content: "";
-  z-index: -1;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--secondary-color);
-}
-
-.hidden {
-  display: none;
 }
 
 /* Positions */
 
 #result0 {
-  transform: translateX(-50%) translateY(35%) rotateY(0deg) translateZ(350px);
+  transform: translateX(22.5vw) scale(1.5, 1.5);
 }
 
 #result1 {
-  transform: translateX(-50%) translateY(45%) rotateY(60deg) translateZ(250px)
-    rotateY(-60deg);
+  transform: translateX(35vw) scale(1.2, 1.2);
 }
 
 #result2 {
-  transform: translateX(-50%) translateY(45%) rotateY(120deg) translateZ(250px)
-    rotateY(-60deg);
+  transform: translateX(45vw);
 }
 
 #result3 {
-  transform: translateX(-50%) translateY(45%) rotateY(180deg) translateZ(250px)
-    rotateY(-120deg);
+  transform: translateX(60vw);
+  opacity: 0;
 }
 
 #result4 {
-  transform: translateX(-50%) translateY(45%) rotateY(240deg) translateZ(250px)
-    rotateY(60deg);
+  transform: translateX(0);
 }
 
 #result5 {
-  transform: translateX(-50%) translateY(45%) rotateY(300deg) translateZ(250px)
-    rotateY(60deg);
+  transform: translateX(10vw) scale(1.2, 1.2);
 }

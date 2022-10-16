@@ -30,7 +30,3 @@ export const carouselContent = (resultDatas) => {
     .join("");
   carouselContainer.insertAdjacentHTML("afterbegin", carouselContent);
 };
-// % matching div
-{
-  /* <div class="matchChart" style="height:${result.score}%"></div> */
-}
