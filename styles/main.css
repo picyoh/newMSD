@@ -1,10 +1,11 @@
 :root {
-  --background-color: #212121;
+  --background-color: #28262b;
   --light-background-color: #343238;
   --dark-background-color: #030202;
   --main-color: #187d65;
   --secondary-color: #2ee7ba;
   --text-color: #cecece;
+  --darken-text-color: #aeaeae;
 }
 
 body {
@@ -30,6 +31,7 @@ header {
 }
 
 .up-header {
+  position: relative;
   width: 100%;
   height: 12vh;
   display: flex;
@@ -57,16 +59,30 @@ h1 {
 
 #color-scheme img {
   width: 13%;
-  filter: invert(36%) sepia(75%) saturate(415%) hue-rotate(115deg) brightness(94%) contrast(93%);
+  filter: invert(13%) sepia(17%) saturate(259%) hue-rotate(222deg)
+    brightness(99%) contrast(95%);
 }
 
 /* -> BURGER */
 
-#menu-burger {
+.menu-burger-container {
+  position: relative;
   flex: 10%;
+  height: 3vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+#menu-burger {
+  width: 20%;
+  height: 100%;
+}
+
+#burger-icon {
+  position: absolute;
+  width: 2vw;
+  height: 0.5vh;
+  background-color: var(--background-color);
 }
 
 #burger-icon::before {
@@ -74,28 +90,25 @@ h1 {
   position: absolute;
   width: 2vw;
   height: 0.5vh;
-  top: -1.2vh;
-  background-color: var(--main-color);
-}
-
-#burger-icon {
-  position: absolute;
-  width: 2vw;
-  height: 0.5vh;
-  background-color: var(--main-color);
+  top: 1.2vh;
+  background-color: var(--background-color);
 }
 
 #burger-icon::after {
   content: "";
   position: absolute;
   width: 2vw;
-  height: 0.5vh;
-  top: 1.2vh;
-  background-color: var(--main-color);
+  height: 0.45vh;
+  top: 2.4vh;
+  background-color: var(--background-color);
 }
 
-.medias {
-  display: none;
+.menu-container {
+  position: absolute;
+  top: 125%;
+  left: 4%;
+  display: flex;
+  align-items: center;
 }
 
 /* -> BOTTOM CURVE */
@@ -191,7 +204,7 @@ h2 {
   border-radius: 1rem;
   box-shadow: inset 0px 0px 7px 2px var(--dark-background-color);
   z-index: 1;
-  padding: .3rem
+  padding: 0.3rem;
 }
 
 .cursor {
@@ -241,7 +254,6 @@ h2 {
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  padding-top: 3rem;
 }
 
 .question h2 {
@@ -253,6 +265,7 @@ h2 {
 .firstQuestion {
   position: absolute;
   top: 50%;
+  padding-top: 3rem;
 }
 
 .firstQuestion h2 {
@@ -264,6 +277,11 @@ h2 {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
+  gap: 2%;
+}
+
+.answer {
+  margin-bottom: 1rem;
 }
 
 .answer img {
@@ -293,6 +311,11 @@ button {
   padding: 2%;
   z-index: 1;
   border-radius: 0;
+}
+
+.previous,
+.next:disabled {
+  color: var(--darken-text-color);
 }
 
 /* FOOTER */

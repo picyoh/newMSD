@@ -1,3 +1,5 @@
+import { handleBurger } from "./feature/burger/burgerAction.js";
+
 import { appendFirstQuestion } from "./feature/questions/Question.js";
 import { handleQuestionClick } from "./feature/questions/questionActions.js";
 
@@ -7,6 +9,7 @@ import { setCarousel, updateCarousel } from "./feature/carousel/carouselActions.
 window.onload = () => {
   loadQuestions();
   loadResult();
+  handleBurger();
   sessionStorage.setItem("userData", "[]");
   appendFirstQuestion();
   handleQuestionClick();
@@ -41,8 +44,8 @@ export const setUserChoice = (target) => {
     }
     // set new choices
     sessionStorage.setItem("userData", JSON.stringify(userData));
-    // disable next button
-    document.querySelector(".next").setAttribute("disabled", "");
+    // // disable next button
+    // document.querySelector(".next").setAttribute("disabled", "");
   }
   // check whether element exist in array
   if (userData.indexOf(btnValue) === -1) {

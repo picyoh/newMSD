@@ -30,3 +30,4 @@ export const carouselContent = (resultDatas) => {
     .join("");
   carouselContainer.insertAdjacentHTML("afterbegin", carouselContent);
 };
+//TODO: check pourquoi le pourcentage disparait quand next ou prev navTape

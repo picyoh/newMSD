@@ -33,10 +33,12 @@ export const updateCarousel = () => {
   const results = sortResults(resultDatas, userData, questions.length);
   // set carousel
   carouselContent(results);
+  document.querySelector("#result0").classList.add("foreground");
 };
 
 const carouselPrev = () => {
   document.querySelector("#carouselPrev").addEventListener("click", (e) => {
+    e.preventDefault();
     e.stopPropagation();
     // Set foreground
     foreground++;
@@ -48,6 +50,7 @@ const carouselPrev = () => {
 
 const carouselNext = () => {
   document.querySelector("#carouselNext").addEventListener("click", (e) => {
+    e.preventDefault();
     e.stopPropagation();
     // Set foreground
     foreground--;
