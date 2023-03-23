@@ -2,7 +2,6 @@ import { appendResults, carouselContent } from "./Carousel.js";
 import { sortResults } from "../../services/sortResults.js";
 
 let foreground = 0;
-let currentDegree;
 
 export const setCarousel = () => {
   // get datas
@@ -13,9 +12,9 @@ export const setCarousel = () => {
   const results = sortResults(resultDatas, userData, questions.length);
   // set carousel
   appendResults(results);
+  document.querySelector("#result0").classList.add("foreground");
   carouselPrev();
   carouselNext();
-  currentDegree = 0;
 };
 
 export const updateCarousel = () => {
@@ -34,84 +33,103 @@ export const updateCarousel = () => {
   const results = sortResults(resultDatas, userData, questions.length);
   // set carousel
   carouselContent(results);
+  document.querySelector("#result0").classList.add("foreground");
 };
- 
+
 const carouselPrev = () => {
   document.querySelector("#carouselPrev").addEventListener("click", (e) => {
+    e.preventDefault();
     e.stopPropagation();
     // Set foreground
-    if(foreground === 0){
-      foreground = 5;
-    }else {
-      foreground--;
-    }
-    console.log("left", foreground);
-    rotate("left", foreground);
+    foreground++;
+    foreground = calcLimit(foreground);
+    console.log("right", foreground);
+    translate("right", foreground);
   });
 };
 
 const carouselNext = () => {
   document.querySelector("#carouselNext").addEventListener("click", (e) => {
+    e.preventDefault();
     e.stopPropagation();
-        // Set foreground
-        if(foreground === 5){
-          foreground = 0;
-        }else {
-          foreground++;
-        }
-    console.log("right", foreground);
-    rotate("right", foreground);
+    // Set foreground
+    foreground--;
+    foreground = calcLimit(foreground);
+    console.log("left", foreground);
+    translate("left", foreground);
   });
 };
 
-const rotate = (direction, foreground) => {
-
-  switch (direction) {
-    //   case "up":
-    //     return degree =
-    case "right":
-      currentDegree -= 60;
-      break;
-    //   case "down":
-    case "left":
-      currentDegree += 60;
-      break;
-    default:
-      currentDegree;
+const translate = (direction, foreground) => {
+  // Set translate value
+  let currentDegree;
+  if (direction === "left") {
+    currentDegree = "11.25vw";
   }
-
-  console.log(currentDegree);
-  // move carousel
-  const carousel = document.querySelector(".carouselContainer");
-  carousel.style.transform = "rotateY(" + currentDegree + "deg)";
-  // move items
+  if (direction === "right") {
+    currentDegree = "-11.25vw";
+  }
+  // translate whole carousel and scale the right images
   const items = document.querySelectorAll(".results");
   items.forEach((item, index) => {
-    if(index === foreground){
-      item.style.transform =
-      "translateX(-50%) translateY(35%) rotateY(" +
-      60 * index +
-      "deg) translateZ(350px) rotateY(-" +
-      60 * index +
-      "deg) rotateY(" +
-      -currentDegree +
-      "deg)";
-    } else {
-      item.style.transform =
-      "translateX(-50%) translateY(45%) rotateY(" +
-      60 * index +
-      "deg) translateZ(250px) rotateY(-" +
-      60 * index +
-      "deg) rotateY(" +
-      -currentDegree +
-      "deg)";
+    // Calculate positions
+    var pos = calcLimit(2 - foreground + index);
+    console.log(
+      "index : " +
+        index +
+        " pos : " +
+        pos +
+        " item id: " +
+        JSON.stringify(item.id)
+    );
+    // Move last or first tile
+    if (direction === "right" && pos === 0) {
+      item.style.transform = "translateX(60vw)";
     }
-      //hide background
-      /*
-      if(){
-
-      }
-      */
+    if (direction === "right" && pos === 5) {
+      item.style.transform = "translateX(-11vw)";
+    }
+    item.style.transform =
+      item.style.transform + "translateX(" + currentDegree + ");";
+    // Scale middle tiles
+    switch (pos) {
+      case 0:
+        item.style.transform = "scale(1, 1)";
+        item.style.opacity = 1;
+        break;
+      case 1:
+        item.style.transform = "translateX(10vw) scale(1.2, 1.2)";
+        item.classList.remove("foreground");
+        break;
+      case 2:
+        item.style.transform = "translateX(22.5vw) scale(1.5, 1.5)";
+        item.classList.add("foreground");
+        break;
+      case 3:
+        item.style.transform = "translateX(35vw) scale(1.2, 1.2)";
+        item.classList.remove("foreground");
+        break;
+      case 4:
+        item.style.transform = "translateX(45vw)";
+        item.style.opacity = 1;
+        break;
+      case 5:
+        item.style.transform = "scale(0, 0)";
+        item.style.opacity = 0;
+        break;
+      default:
+        console.log("carousel error");
+        break;
+    }
   });
+};
 
+const calcLimit = (number) => {
+  if (number > 5) {
+    return number - 6;
+  }
+  if (number < 0) {
+    return number + 6;
+  }
+  return number;
 };
