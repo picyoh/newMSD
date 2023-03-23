@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ma souris d'ordinateur</title>
+    <link rel="icon" type="image/png" href="./images/msdthumb.png" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,200;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/8862e211f8.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="up-header">
+        <div class="menu-burger-container">
+          <div id="menu-burger">
+            <span id="burger-icon"></span>
+          </div>
+        </div>
+        <div class="menu-container hidden">
+            <div class="menu-element">
+             <a href="./index.html">Votre test</a>
+            </div>
+            <div class="menu-element">
+             <a href="./approche-profilaire.html">Notre méthode</a>
+            </div>
+            <div class="menu-element">
+             <a href="./">Nos critères</a>
+            </div>
+            <div class="menu-element">
+             <a href="./partenaires.html">Nos autres sites</a>
+            </div>
+            <div class="menu-element hidden">
+             <a href="./contact.html">Nous contacter</a>
+            </div>
+         </div>
+        <h1>Ma souris d'ordinateur</h1>
+        <a id="color-scheme" href="">
+          <img src="./images/contrast.png" alt="color scheme" />
+        </a>
+      </div>
+      <div class="down-header">
+        <a class="logo" href="./">
+          <div class="logo-container">
+            <img src="./images/msdcolor.png" alt="logo ma souris d'ordinateur" />
+          </div>
+        </a>
+      </div>
+    </header>
+    <article id="main">
+        <form id="contact" action="" method="post">
+            <h2 style="align-self: flex-start; flex-basis: 100%;">Nous contacter</h2>
+            <label class="contactLabel">Mail :</label>
+            <input name="mail" id="mail" class="contactInput" type="email" required pattern="([a-z]+)+@([a-z]{2,})+\.([a-z]{2,})">
+            <br>
+            <label class="contactLabel">Objet :</label>
+            <input name="objet" id="objet" class="contactInput" type="text" max="150" required pattern='([\w\-$.,:!?%$( )"]{2,})'>
+            <br>
+            <label class="contactLabel">Message :</label>
+            <br>
+            <textarea name="message" id="message" minlenght="20" maxlength="2500" cols="80" rows="10" required></textarea>
+            <br>
+            <input name="submit" id="submit" type="submit" required>
+            <span class="error" aria-live="polite"></span>
+          </form>
+    </article>
+    <footer>
+      <div class="footer-up">
+        <a class="media" href="/">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+        <a class="media linkdin" href="/">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a class="media" href="/">
+          <i class="fa-brands fa-reddit-alien"></i>
+        </a>
+      </div>
+      <div class="footer-down">
+        <a class="cgu" href="./cgu.html">C.G.U</a>
+        <p>T.B.S. 2022.</p>
+        <a class="mentions" href="./mentions-legales.html">Mentions légales</a>
+      </div>
+    </footer>
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>

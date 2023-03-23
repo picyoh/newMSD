@@ -11,14 +11,23 @@
 body {
   background-color: var(--background-color);
   color: var(--main-color);
-  font-family: "Montserrat", sans-serif;
-
+  font-family: "Fjalla", sans-serif;
   max-width: 100%;
   margin: 0;
   padding: 0;
-
   display: flex;
   flex-direction: column;
+}
+
+/* TODO: pointer to set */
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+a:active {
+  color: var(--main-color);
 }
 
 /* HEADER */
@@ -44,7 +53,7 @@ header {
 }
 
 h1 {
-  flex: 80%;
+  flex: 60%;
   margin: 0;
   font-weight: 600;
   text-transform: uppercase;
@@ -53,21 +62,21 @@ h1 {
 }
 
 #color-scheme {
-  flex: 10%;
+  flex: 20%;
   text-align: center;
 }
 
 #color-scheme img {
-  width: 13%;
+  width: 7%;
   filter: invert(13%) sepia(17%) saturate(259%) hue-rotate(222deg)
     brightness(99%) contrast(95%);
 }
 
-/* -> BURGER */
+/* BURGER */
 
 .menu-burger-container {
   position: relative;
-  flex: 10%;
+  flex: 20%;
   height: 3vh;
   display: flex;
   justify-content: center;
@@ -76,6 +85,8 @@ h1 {
 #menu-burger {
   width: 20%;
   height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #burger-icon {
@@ -105,13 +116,47 @@ h1 {
 
 .menu-container {
   position: absolute;
-  top: 125%;
-  left: 4%;
+  top: 100%;
+  left: 0;
+  width: 15%;
+  height: 81vh;
+  flex: 15%;
   display: flex;
-  align-items: center;
+  flex-flow: row wrap;
+  text-align: center;
+  background-color: var(--secondary-color);
+  /* border-top: .1rem solid var(--light-background-color); */
 }
 
-/* -> BOTTOM CURVE */
+.menu-element {
+  flex: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 0.1rem solid var(--text-color);
+  border-bottom: 0.1rem solid var(--text-color);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.menu-element:last-child {
+  border-bottom: none;
+}
+
+.top-curve{
+  border-top-left-radius: 5rem;
+}
+
+.bottom-curve{
+  border-bottom-left-radius: 5rem;
+}
+
+.flatten {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* BOTTOM CURVE */
 
 .down-header {
   width: 100%;
@@ -145,8 +190,6 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: lightgray;
-  border-radius: 50%;
 }
 
 .logo img {
@@ -174,7 +217,7 @@ h1 {
   content: "";
   position: absolute;
   z-index: -1;
-  width: 100%;
+  width: 85%;
   height: 150%;
   top: 6.5%;
   border: 3px solid var(--text-color);
@@ -295,11 +338,12 @@ h2 {
 /* BUTTONS */
 
 button {
-  padding: 0.8rem 1rem;
+  font-family: "Cabin", sans-serif;
   font-size: 1.2rem;
   text-transform: uppercase;
   color: var(--text-color);
   background-color: var(--light-background-color);
+  padding: 0.8rem 1rem;
   border: 2px solid var(--text-color);
   border-radius: 60px;
 }
@@ -321,12 +365,55 @@ button {
 /* FOOTER */
 
 footer {
+  text-align: center;
   position: fixed;
   bottom: 0;
+  padding-top: 0.8em;
+  padding-bottom: 0.4em;
   width: 100%;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  background-color: var(--secondary-color);
+  border-top-left-radius: 3vh;
+  border-top-right-radius: 3vh;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1em;
+  color: var(--main-color);
+}
+
+.footer-up {
+  width: 100%;
+  padding-bottom: 0.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-up a {
+  padding: 0 4em;
+}
+
+.footer-down {
+  width: 100%;
+  padding-bottom: 0.4em;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer-down a {
+  flex: 25%;
+}
+
+.footer-down p {
+  flex: 50%;
+}
+
+.media {
+  padding: 0 1rem;
 }
 
 /* CAROUSEL */
