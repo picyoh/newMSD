@@ -29,8 +29,11 @@ export const carouselContent = (resultDatas) => {
     })
     .join("");
   carouselContainer.insertAdjacentHTML("afterbegin", carouselContent);
+  hideCarouselContent();
 };
-// % matching div
-{
-  /* <div class="matchChart" style="height:${result.score}%"></div> */
+
+const hideCarouselContent = () => {
+  document.querySelector("#result2").classList.add("hidden");
+  document.querySelector("#result3").classList.add("hidden");
+  document.querySelector("#result4").classList.add("hidden");
 }

@@ -12,7 +12,8 @@ body {
   color: var(--main-color);
   font-family: "Montserrat", sans-serif;
 
-  max-width: 100%;
+  max-width: 99vw;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
 
@@ -26,7 +27,6 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 24vh;
 }
 
 .up-header {
@@ -51,14 +51,14 @@ h1 {
 }
 
 #color-scheme {
+  display: none;
   flex: 10%;
   text-align: center;
 }
 
 #color-scheme img {
   width: 13%;
-  filter: invert(36%) sepia(75%) saturate(415%) hue-rotate(115deg)
-    brightness(94%) contrast(93%);
+  filter: invert(36%) sepia(75%) saturate(415%) hue-rotate(115deg) brightness(94%) contrast(93%);
 }
 
 /* -> BURGER */
@@ -144,27 +144,17 @@ h1 {
 /* PAGE */
 
 #main {
-  height: 70vh;
   display: flex;
+  flex-grow: 1;
   justify-content: center;
+  align-items: center;
 }
 
 #content {
   position: relative;
-  width: 75%;
-  height: 50%;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-}
-
-#content::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 150%;
-  top: 6.5%;
   border: 3px solid var(--text-color);
   border-radius: 1.5rem;
 }
@@ -237,23 +227,21 @@ h2 {
   align-items: center;
 }
 
+.firstQuestion {
+  height: 20vh;
+}
+
 .question {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  padding-top: 3rem;
 }
 
 .question h2 {
   flex: 100%;
   width: max-content;
   font-size: 2.5rem;
-}
-
-.firstQuestion {
-  position: absolute;
-  top: 50%;
 }
 
 .firstQuestion h2 {
@@ -268,7 +256,7 @@ h2 {
 }
 
 .answer img {
-  max-width: 18vw;
+  max-width: 9vw;
   margin: 2rem;
   padding: 2rem;
   border: 1px solid lightgrey;
@@ -298,12 +286,16 @@ button {
 /* FOOTER */
 
 footer {
-  position: fixed;
-  bottom: 0;
   width: 100%;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+}
+
+.medias {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 /* CAROUSEL */
@@ -312,12 +304,10 @@ footer {
   width: 80%;
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 115%;
 }
 
 .carouselContent {
-  height: 30vh;
+  height: 12vh;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -341,7 +331,7 @@ footer {
 
 .results .imgContainer {
   width: 20vw;
-  height: 16vh;
+  height: 6vh;
 }
 
 .results .imgContainer img {
@@ -350,8 +340,8 @@ footer {
   height: 75%;
   width: 30%;
   */
-  height: 50%;
-  width: 25%;
+  height: auto;
+  width: auto;
   padding: 1rem;
   border-radius: 15%;
   background-color: white;
@@ -377,26 +367,141 @@ footer {
 }
 
 #result1 {
-  transform: translateX(-50%) translateY(45%) rotateY(60deg) translateZ(250px)
-    rotateY(-60deg);
+  transform: translateX(-50%) translateY(15%) rotateY(60deg) translateZ(200px)  rotateY(-60deg);
 }
 
 #result2 {
-  transform: translateX(-50%) translateY(45%) rotateY(120deg) translateZ(250px)
-    rotateY(-60deg);
+  transform: translateX(-50%) translateY(15%) rotateY(120deg) translateZ(200px)  rotateY(-60deg);
 }
 
 #result3 {
-  transform: translateX(-50%) translateY(45%) rotateY(180deg) translateZ(250px)
-    rotateY(-120deg);
+  transform: translateX(-50%) translateY(15%) rotateY(180deg) translateZ(200px)  rotateY(-120deg);
 }
 
 #result4 {
-  transform: translateX(-50%) translateY(45%) rotateY(240deg) translateZ(250px)
-    rotateY(60deg);
+  transform: translateX(-50%) translateY(15%) rotateY(240deg) translateZ(200px)  rotateY(60deg);
 }
 
 #result5 {
-  transform: translateX(-50%) translateY(45%) rotateY(300deg) translateZ(250px)
-    rotateY(60deg);
+  transform: translateX(-50%) translateY(15%) rotateY(300deg) translateZ(200px)  rotateY(60deg);
+}
+
+/* Responsive Phone */
+
+@media screen and (max-width:426px) {
+
+  /* HEADER */
+
+  #burger-icon,
+  #burger-icon::before,
+  #burger-icon::after {
+    width: 7vw;
+    height: .3vh;
+  }
+
+  #burger-icon::before {
+    top: -.9vh;
+    height: .4vh;
+  }
+
+  #burger-icon::after {
+    top: .8vh;
+  }
+
+  h1 {
+    font-size: 1rem;
+    text-align: left;
+    padding-left: 1rem;
+  }
+
+  .down-header {
+    height: 5vh;
+  }
+
+  .logo {
+    pointer-events: none;
+  }
+
+  .logo-container {
+    display: none;
+  }
+
+  /* PAGE */
+
+  /* navTape */
+
+  .navTape {
+    position: absolute;
+    width: 80%;
+    height: 2rem;
+    top: -1rem;
+  }
+
+  .cursorContainer {
+    height: 1vh;
+    padding: 0.3rem 0.5rem;
+  }
+
+  /* content */
+
+  #content {
+    flex-grow: 1;
+    height: fit-content;
+    flex-flow: column;
+    align-items: center;
+    justify-content: start;
+    margin: 0 2rem 3.5rem 2rem;
+    padding: 1rem;
+  }
+
+  /* questions */
+
+  #questions {
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .question h2 {
+    font-size: 1rem;
+    width: auto;
+    margin: 1rem;
+  }
+
+  .question button {
+    font-size: .8rem;
+    padding: .4rem .5rem;
+  }
+
+  .answerGroup {
+    width: auto;
+    flex-flow: column;
+    font-size: .8rem;
+  }
+
+  .answer {
+    margin-bottom: .5rem;
+  }
+
+  .carousel {
+    overflow: hidden;
+    position: absolute;
+    bottom: -3.4rem;
+  }
+
+  .results .imgContainer img {
+    height: 3rem;
+    width: 3rem;
+    padding: .5rem;
+  }
+
+  /* FOOTER */
+
+  footer {
+    position: relative;
+  }
+
+  footer p {
+    font-size: .4rem;
+    margin: 0;
+  }
 }

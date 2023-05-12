@@ -35,14 +35,14 @@ export const updateCarousel = () => {
   // set carousel
   carouselContent(results);
 };
- 
+
 const carouselPrev = () => {
   document.querySelector("#carouselPrev").addEventListener("click", (e) => {
     e.stopPropagation();
     // Set foreground
-    if(foreground === 0){
+    if (foreground === 0) {
       foreground = 5;
-    }else {
+    } else {
       foreground--;
     }
     console.log("left", foreground);
@@ -53,12 +53,12 @@ const carouselPrev = () => {
 const carouselNext = () => {
   document.querySelector("#carouselNext").addEventListener("click", (e) => {
     e.stopPropagation();
-        // Set foreground
-        if(foreground === 5){
-          foreground = 0;
-        }else {
-          foreground++;
-        }
+    // Set foreground
+    if (foreground === 5) {
+      foreground = 0;
+    } else {
+      foreground++;
+    }
     console.log("right", foreground);
     rotate("right", foreground);
   });
@@ -87,31 +87,32 @@ const rotate = (direction, foreground) => {
   // move items
   const items = document.querySelectorAll(".results");
   items.forEach((item, index) => {
-    if(index === foreground){
+    if (index === foreground) {
       item.style.transform =
-      "translateX(-50%) translateY(35%) rotateY(" +
-      60 * index +
-      "deg) translateZ(350px) rotateY(-" +
-      60 * index +
-      "deg) rotateY(" +
-      -currentDegree +
-      "deg)";
+        "translateX(-50%) translateY(70%) rotateY(" +
+        60 * index +
+        "deg) translateZ(350px) rotateY(-" +
+        60 * index +
+        "deg) rotateY(" +
+        -currentDegree +
+        "deg)";
     } else {
       item.style.transform =
-      "translateX(-50%) translateY(45%) rotateY(" +
-      60 * index +
-      "deg) translateZ(250px) rotateY(-" +
-      60 * index +
-      "deg) rotateY(" +
-      -currentDegree +
-      "deg)";
-    }
+        "translateX(-50%) translateY(70%) rotateY(" +
+        60 * index +
+        "deg) translateZ(200px)  rotateY(-" +
+        60 * index +
+        "deg) rotateY(" +
+        -currentDegree +
+        "deg)";
       //hide background
-      /*
-      if(){
-
+      if (index === foreground || index === foreground + 1 || index === foreground - 1) {
+        item.classList.remove("hidden")
+      } else {
+        item.classList.add("hidden")
       }
-      */
+    }
+
   });
 
 };
