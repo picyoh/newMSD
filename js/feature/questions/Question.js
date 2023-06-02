@@ -20,7 +20,7 @@ export const appendQuestion = (currentIndex) => {
   ];
   const userData = JSON.parse(sessionStorage.getItem("userData"));
   const button = `
-            <div id="question${currentIndex + 1}" class="question">
+            <div id="question${currentIndex + 1}" class="question ariseQuestion">
             ${
               currentQuestion.question === undefined
                 ? currentQuestion.qMulti
@@ -56,4 +56,12 @@ export const appendQuestion = (currentIndex) => {
             </div>
         `;
   questions.insertAdjacentHTML("beforeend", button);
+  animationRemoveClass(currentIndex + 1);
 };
+
+export const animationRemoveClass = (toRemove) => {
+const arisingQuestion = document.querySelector('#question' + toRemove);
+setTimeout(function() {
+  arisingQuestion.classList.remove('ariseQuestion');
+}, 1)
+}

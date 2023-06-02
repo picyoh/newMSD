@@ -1,15 +1,24 @@
 import { appendFirstQuestion } from "./feature/questions/Question.js";
 import { handleQuestionClick } from "./feature/questions/questionActions.js";
 
-import { loadQuestions, loadResult } from "./services/load.js";
+import { loadQuestions, loadResult } from "./feature/results/load.js";
 import { setCarousel, updateCarousel } from "./feature/carousel/carouselActions.js";
+import { openingBurger } from "./feature/burger/burgerAction.js"
+import { fillCGU, insertPopUp } from "./feature/cgu/cguFiller.js"
 
 window.onload = () => {
-  loadQuestions();
-  loadResult();
-  sessionStorage.setItem("userData", "[]");
-  appendFirstQuestion();
-  handleQuestionClick();
+  if(document.querySelector("#main") !== null){
+    loadQuestions();
+    loadResult();
+    sessionStorage.setItem("userData", "[]");
+    appendFirstQuestion();
+    handleQuestionClick();
+    insertPopUp();
+  };
+  if(document.querySelector("#cguArticle")){
+    fillCGU();
+  }
+  openingBurger();
 };
 
 const content = document.querySelector("#content");
