@@ -16,9 +16,10 @@ export const sortResults = (datas, userData, questionsLength) => {
     });
     // compare datas
     const data = datas[index];
-    const lastIndex = userResults.length - 1;
-    const smallest = userResults[lastIndex];
+    /* const lastIndex = userResults.length - 1;
+    const smallest = userResults[lastIndex]; */
     // push and sort result score
+    console.log(userResults)
     userResults.push({ data, score });
     userResults.sort((a, b) => {
       return b.score - a.score;
