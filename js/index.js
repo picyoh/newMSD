@@ -2,20 +2,26 @@ import { appendFirstQuestion } from "./feature/questions/Question.js";
 import { handleQuestionClick } from "./feature/questions/questionActions.js";
 
 import { loadQuestions, loadResult } from "./feature/results/load.js";
-import { setCarousel, updateCarousel } from "./feature/carousel/carouselActions.js";
-import { openingBurger } from "./feature/burger/burgerAction.js"
-import { fillCGU, insertPopUp } from "./feature/cgu/cguFiller.js"
+import {
+  setCarousel,
+  updateCarousel,
+} from "./feature/carousel/carouselActions.js";
+import { openingBurger } from "./feature/burger/burgerAction.js";
+import { fillCGU, insertPopUp } from "./feature/cgu/cguFiller.js";
 
 window.onload = () => {
-  if(document.querySelector("#main") !== null){
+  if (document.querySelector("#main") !== null) {
     loadQuestions();
     loadResult();
     sessionStorage.setItem("userData", "[]");
-    appendFirstQuestion();
-    handleQuestionClick();
-    insertPopUp();
-  };
-  if(document.querySelector("#cguArticle")){
+  }
+};
+
+export const initContent = () => {
+  appendFirstQuestion();
+  handleQuestionClick();
+  insertPopUp();
+  if (document.querySelector("#cguArticle")) {
     fillCGU();
   }
   openingBurger();
@@ -34,15 +40,15 @@ export const setUserChoice = (target) => {
   const userDataLength = userData.length;
   // get current index
   const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
-  
+
   // console.log("user/current", userDataLength, currentIndex);
-  
+
   // check whether we need change previous choice
   if (userDataLength > currentIndex) {
     const diff = userDataLength + 1 - currentIndex;
 
     // console.log("diff", diff);
-    
+
     // pop choices
     let i;
     for (i = 0; i < diff; i++) {
@@ -59,11 +65,11 @@ export const setUserChoice = (target) => {
     sessionStorage.setItem("userData", JSON.stringify(userData));
   }
   // check length to append carousel
-  if(userDataLength === 0) {
-    setCarousel()
+  if (userDataLength === 0) {
+    setCarousel();
   }
   // update carousel
-  if(userDataLength > 1) {
-    updateCarousel()
+  if (userDataLength > 1) {
+    updateCarousel();
   }
 };

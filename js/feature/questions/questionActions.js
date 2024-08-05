@@ -16,9 +16,11 @@ export const handleQuestionClick = () => {
     answer.addEventListener("click", (e) => {
       // set userChoice
       if (e.target.id !== "") setUserChoice(e.target);
-      // set current index
+      /*/ set current index
       const currentIndex = parseInt(e.target.closest(".question").id.slice(-1));
+      console.log(currentIndex)
       sessionStorage.setItem("currentIndex", currentIndex);
+      */
       // lauch nextStep
       nextStep();
     });
@@ -29,7 +31,8 @@ export const nextStep = () => {
   // get current index
   const currentIndex = parseInt(sessionStorage.getItem("currentIndex"));
   // get current question
-  const toHide = "#question" + currentIndex;
+  const number =  currentIndex - 1;
+  const toHide = "#question" + number;
   const questionToHide = document.querySelector(toHide);
   // hide current question
   questionToHide.classList.add("hiddenQuestion");
@@ -50,13 +53,13 @@ export const nextStep = () => {
   // set a new question
   if (getAdded === null && (currentIndex < (questionDatas.length - 1))) {
     appendQuestion(currentIndex);
-    animationRemoveClass(currentIndex + 1);
+    animationRemoveClass(currentIndex);
   }
   if(getAdded !== null){
-    animationRemoveClass(currentIndex + 1);
+    animationRemoveClass(currentIndex);
   }
   // handle NavTape
-  if (currentIndex === 0) {
+  if (currentIndex === 1) {
     appendNavTape(questionDatas);
   }
   // move cursor

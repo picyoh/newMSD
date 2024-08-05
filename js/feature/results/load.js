@@ -1,3 +1,5 @@
+import { initContent } from "../../index.js";
+
 function loadQuestions() {
   fetch("/js/datas/questions.json")
     .then((response) => response.json())
@@ -5,6 +7,7 @@ function loadQuestions() {
       // get Json
       const questionDatas = response.questions;
       sessionStorage.setItem("questionsItem", JSON.stringify(questionDatas));
+      initContent();
     })
     .catch((error) => console.log("erreur json " + error));
 }

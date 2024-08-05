@@ -1,17 +1,19 @@
 export const appendFirstQuestion = () => {
+  const firstValue= JSON.parse(sessionStorage.getItem('questionsItem'))[0].question;
   const first = `
     <section id="content">
       <div id="questions">
         <div id="question0" class="question firstQuestion">
           <h2>Découvrez votre souris</h2>
           <div class="answerGroup">
-            <button class="firstAnswer answer">Go !</button>
+            <button class="firstAnswer answer">${firstValue}</button>
           </div>
         </div>
       </div>
     </section>
       `;
   document.querySelector("#main").insertAdjacentHTML("beforeend", first);
+  sessionStorage.setItem('currentIndex', '1');
 };
 
 export const appendQuestion = (currentIndex) => {
@@ -19,12 +21,14 @@ export const appendQuestion = (currentIndex) => {
     currentIndex
   ];
   const userData = JSON.parse(sessionStorage.getItem("userData"));
+  console.log(currentQuestion)
   const button = `
-            <div id="question${currentIndex + 1}" class="question ariseQuestion">
+            <div id="question${currentIndex}" class="question ariseQuestion">
             ${
               currentQuestion.question === undefined
                 ? currentQuestion.qMulti
                     .map((element) => {
+                      console.log(element)
                       if (userData.indexOf(element.parent) > -1) {
                         return `<h2>${element.question}</h2>`;
                       }
@@ -43,7 +47,7 @@ export const appendQuestion = (currentIndex) => {
                   }
                   if (
                     userData.indexOf(choice.parent) > -1 ||
-                    choice.parent === undefined
+                    choice.parent === undefined || choice.parent === "" 
                   ) {
                     return `<button id=${choice.title.replace(
                       " ",
@@ -56,7 +60,7 @@ export const appendQuestion = (currentIndex) => {
             </div>
         `;
   questions.insertAdjacentHTML("beforeend", button);
-  animationRemoveClass(currentIndex + 1);
+  animationRemoveClass(currentIndex);
 };
 
 export const animationRemoveClass = (toRemove) => {
