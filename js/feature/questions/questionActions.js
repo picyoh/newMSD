@@ -16,11 +16,6 @@ export const handleQuestionClick = () => {
     answer.addEventListener("click", (e) => {
       // set userChoice
       if (e.target.id !== "") setUserChoice(e.target);
-      /*/ set current index
-      const currentIndex = parseInt(e.target.closest(".question").id.slice(-1));
-      console.log(currentIndex)
-      sessionStorage.setItem("currentIndex", currentIndex);
-      */
       // lauch nextStep
       nextStep();
     });

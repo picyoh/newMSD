@@ -49,7 +49,7 @@ export const appendQuestion = (currentIndex) => {
                     userData.indexOf(choice.parent) > -1 ||
                     choice.parent === undefined || choice.parent === "" 
                   ) {
-                    return `<button id=${choice.title.replace(
+                    return `<button id=${choice.tag.replace(
                       " ",
                       "_"
                     )} class="answer">${choice.title}</button>`;

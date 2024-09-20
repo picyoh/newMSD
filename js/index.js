@@ -27,9 +27,6 @@ export const initContent = () => {
   openingBurger();
 };
 
-const content = document.querySelector("#content");
-const questions = document.querySelector("#questions");
-
 // TODO: move setUserChoice
 
 export const setUserChoice = (target) => {
