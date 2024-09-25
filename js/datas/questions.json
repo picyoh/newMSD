@@ -23,19 +23,23 @@
                 {
                     "title": "Hardcore Gamer",
                     "value": "10",
+                    "tag": "hardcore",
                     "parent": "Gaming"
                 },
                 {
                     "title": "Forte utilisation",
                     "value": "2",
+                    "tag": "forte",
                     "parent": "Bureautique"
                 },
                 {
                     "title": "Quotidien/régulier",
+                    "tag": "quotidien",
                     "value": "1"
                 },
                 {
                     "title": "Ponctuel",
+                    "tag": "ponctuel",
                     "value": "1"
                 }
             ]

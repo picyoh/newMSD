@@ -454,8 +454,14 @@ button {
 
 /* -> CAROUSEL IMAGE */
 
+.resultLink{
+    height: 100%;
+    z-index: 3;
+}
+
 .results {
     flex: 30%;
+    height: 50%;
     position: absolute;
     text-align: center;
     transition: all 1s ease-in-out;

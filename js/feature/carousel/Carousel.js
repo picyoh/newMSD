@@ -27,11 +27,11 @@ export const carouselContent = (resultDatas) => {
     .map((result, index) => {
       return `
         <div id="position${index}" class="results result${index}">
-          <div class="imgContainer">
-            <a class='resultLink' src='${result.data.affLink}'>
+          <a class='resultLink' href='${result.data.affLink}'>
+            <div class="imgContainer">
               <img src='${result.data.imgSrc}' />
-            </a>
-          </div>
+            </div>
+          </a>
         </div>
         `;
     })
