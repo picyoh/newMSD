@@ -76,6 +76,7 @@ export const appendQuestion = (currentIndex) => {
                     choice.parent === undefined ||
                     choice.parent === ""
                   ) {
+                    console.log(choice.tag);
                     return `<button id=${choice.tag.replace(
                       " ",
                       "_"

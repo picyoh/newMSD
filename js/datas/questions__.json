@@ -1,0 +1,147 @@
+{
+    "questions": [
+        {
+            "question": "pizza",
+            "number": "0.0"
+        },
+        {
+            "question": "base",
+            "number": "1.1",
+            "choices": [
+                {
+                    "number": "1.1.4",
+                    "name": "select",
+                    "titles": [
+                        {
+                            "title": "Creme",
+                            "tag": "cream"
+                        },
+                        {
+                            "title": "Tomate",
+                            "tag": "tomato"
+                        },
+                        {
+                            "title": "Sucre",
+                            "tag": "sugar"
+                        }
+                    ]
+                },
+                {
+                    "number": "1.1.1",
+                    "title": "Creme",
+                    "tag": "cream",
+                    "parent": ""
+                },
+                {
+                    "number": "1.1.2",
+                    "title": "Tomate",
+                    "tag": "tomato",
+                    "parent": ""
+                },
+                {
+                    "number": "1.1.3",
+                    "title": "Sucre",
+                    "tag": "sugar",
+                    "parent": ""
+                }
+            ]
+        },
+        {
+            "qMulti": [
+                {
+                    "question": "choix creme",
+                    "number": "2.1",
+                    "parent": "cream"
+                },
+                {
+                    "question": "choix tomate",
+                    "number": "2.2",
+                    "parent": "tomato"
+                },
+                {
+                    "question": "choix sucre",
+                    "number": "2.3",
+                    "parent": "sugar"
+                }
+            ],
+            "choices": [
+                {
+                    "number": "2.1.1",
+                    "title": "Savoyarde",
+                    "tag": "savoy",
+                    "parent": "cream"
+                },
+                {
+                    "number": "2.1.2",
+                    "title": "4 fromages",
+                    "tag": "4 cheese",
+                    "parent": "cream"
+                },
+                {
+                    "number": "2.2.1",
+                    "title": "Napoli",
+                    "tag": "nap",
+                    "parent": "tomato"
+                },
+                {
+                    "number": "2.2.2",
+                    "title": "Reina",
+                    "tag": "reina",
+                    "parent": "tomato"
+                },
+                {
+                    "number": "2.3.1",
+                    "title": "Banane chocolat",
+                    "tag": "banana",
+                    "parent": "sugar"
+                },
+                {
+                    "number": "2.3.2",
+                    "title": "Fraise",
+                    "tag": "strawberry",
+                    "parent": "sugar"
+                }
+            ]
+        },
+        {
+            "qMulti": [
+                {
+                    "question": "supplements sales",
+                    "number": "3.1",
+                    "parent": "reina"
+                },
+                {
+                    "question": "supplement sucre",
+                    "number": "3.2",
+                    "parent": "strawberry"
+                }
+            ],
+            "choices": [
+                {
+                    "number": "3.1.1",
+                    "title": "Fromage",
+                    "tag": "cheese",
+                    "parent": "reina"
+                },
+                {
+                    "number": "3.1.2",
+                    "title": "Lardons",
+                    "tag": "bacon",
+                    "parent": "reina"
+                },
+                {
+                    "number": "3.2.1",
+                    "title": "Chocolat",
+                    "tag": "chocolate",
+                    "parent": "strawberry"
+                },
+                {
+                    "number": "3.2.2",
+                    "title": "Chantilly",
+                    "tag": "sweet cream",
+                    "parent": "strawberry"
+                }
+            ]
+        }
+    ]
+}
