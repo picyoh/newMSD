@@ -28,7 +28,9 @@ export const carouselContent = (resultDatas) => {
       return `
         <div id="position${index}" class="results result${index}">
           <div class="imgContainer">
-            <img src= ${result.data.src} />
+            <a class='resultLink' src='${result.data.affLink}'>
+              <img src='${result.data.imgSrc}' />
+            </a>
           </div>
         </div>
         `;
